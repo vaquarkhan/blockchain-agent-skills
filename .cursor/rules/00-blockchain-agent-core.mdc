@@ -1,0 +1,13 @@
+---
+description: Core blockchain agent rules — load skills progressively, never bypass guardrails
+globs:
+alwaysApply: true
+---
+
+# Blockchain Agent Core
+
+1. Read `AGENTS.md` before loading skills.
+2. Start with `using-blockchain-agent-skills` for routing.
+3. **Simulate-first** — no mainnet broadcast without simulation.
+4. Never log or return private keys or seed phrases.
+5. Apply guardrails from `guardrails/` for all write operations.

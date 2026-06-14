@@ -1,0 +1,19 @@
+run_id: ""
+timestamp_utc: ""
+chain:
+  name: ""
+  chain_id: ""
+  mcp_server: ""
+skill:
+  primary: ""
+  secondary: []
+operation:
+  type: ""  # read | write | deploy | bridge
+  value_usd_estimate: 0
+guardrails_applied:
+  - guardrails/transaction-safety.yaml
+simulation:
+  required: true
+  passed: null
+human_confirmation_required: false
+confidence_score: ""  # HIGH | MEDIUM | LOW

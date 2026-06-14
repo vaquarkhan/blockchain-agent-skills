@@ -1,0 +1,20 @@
+name: solana-programs-starter
+version: "0.1.0"
+description: Solana Anchor programs, SPL tokens, priority fees
+
+skills:
+  - chain-abstraction
+  - transaction-lifecycle
+  - smart-contract-factory
+  - token-standards-engine
+
+mcp_servers:
+  - solana-rpc-server
+
+preset: presets/solana-mainnet/PRESET.md
+
+features:
+  - anchor_idl
+  - pda_derivation
+  - jito_tips
+  - versioned_transactions

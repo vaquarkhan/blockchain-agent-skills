@@ -41,5 +41,33 @@
     "guardrails/security.yaml",
     "guardrails/compliance.yaml",
     "guardrails/denied-topics.yaml"
-  ]
+  ],
+  "presets": [
+    {"name": "evm-core", "path": "presets/evm-core/PRESET.md"},
+    {"name": "solana-mainnet", "path": "presets/solana-mainnet/PRESET.md"},
+    {"name": "near-mainnet", "path": "presets/near-mainnet/PRESET.md"},
+    {"name": "cosmos-ibc", "path": "presets/cosmos-ibc/PRESET.md"}
+  ],
+  "starter_packs": [
+    {"name": "evm-core-starter", "path": "starter-packs/evm-core-starter.yaml"},
+    {"name": "solana-programs-starter", "path": "starter-packs/solana-programs-starter.yaml"},
+    {"name": "near-multichain-starter", "path": "starter-packs/near-multichain-starter.yaml"},
+    {"name": "cosmos-ibc-starter", "path": "starter-packs/cosmos-ibc-starter.yaml"},
+    {"name": "compliance-guardrails-starter", "path": "starter-packs/compliance-guardrails-starter.yaml"}
+  ],
+  "examples": [
+    {"name": "chain-provider-validation", "path": "examples/chain-provider-validation", "runnable": true},
+    {"name": "evm-erc20-deploy", "path": "examples/evm-erc20-deploy", "runnable": true},
+    {"name": "solana-spl-token", "path": "examples/solana-spl-token", "runnable": false},
+    {"name": "cosmos-ibc-transfer", "path": "examples/cosmos-ibc-transfer", "runnable": false}
+  ],
+  "plugins": {
+    "vscode": "vscode-extension/package.json",
+    "jetbrains": "jetbrains-plugin/gradle.properties"
+  },
+  "installers": {
+    "script": "scripts/install_toolkit.py",
+    "bootstrap_sh": "bootstrap.sh",
+    "bootstrap_ps1": "bootstrap.ps1"
+  }
 }

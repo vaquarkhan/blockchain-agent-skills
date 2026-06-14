@@ -1,0 +1,12 @@
+---
+description: Chain and MCP server routing for multi-chain operations
+globs:
+alwaysApply: true
+---
+
+# Chain Routing
+
+1. Resolve chain via `registry/chains.json` or `lib.chain_providers.resolve_chain()`.
+2. Route to MCP server by VM family (evm-rpc-server, solana-rpc-server, etc.).
+3. Validate addresses per chain format before RPC calls.
+4. Include confidence score (HIGH/MEDIUM/LOW) in every operation response.

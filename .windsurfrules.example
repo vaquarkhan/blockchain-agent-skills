@@ -1,0 +1,17 @@
+# Windsurf Rules — Blockchain Agent Skills
+
+Read AGENTS.md before any blockchain operation.
+
+## Policy
+
+1. Load using-blockchain-agent-skills for routing
+2. Simulate before broadcast — always
+3. Never log or return private keys
+4. Block OFAC-sanctioned addresses
+5. One primary skill per operation thread
+
+## Lifecycle
+
+/plan → /simulate → /confirm → /broadcast → /confirm-depth
+
+Copy to `.windsurfrules` or install via VS Code extension.

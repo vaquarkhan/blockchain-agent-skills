@@ -1,0 +1,20 @@
+name: cosmos-ibc-starter
+version: "0.1.0"
+description: Cosmos SDK chains with IBC transfers
+
+skills:
+  - chain-abstraction
+  - transaction-lifecycle
+  - token-standards-engine
+  - event-indexing
+
+mcp_servers:
+  - cosmos-rpc-server
+
+preset: presets/cosmos-ibc/PRESET.md
+
+chains:
+  - cosmos
+  - osmosis
+  - celestia
+  - injective

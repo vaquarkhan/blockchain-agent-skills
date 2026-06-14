@@ -1,0 +1,18 @@
+name: compliance-guardrails-starter
+version: "0.1.0"
+description: AML, sanctions, audit trail for regulated blockchain ops
+
+skills:
+  - using-blockchain-agent-skills
+  - transaction-lifecycle
+
+guardrails:
+  - guardrails/transaction-safety.yaml
+  - guardrails/security.yaml
+  - guardrails/compliance.yaml
+  - guardrails/denied-topics.yaml
+
+requirements:
+  - ofac_screening: mandatory
+  - audit_retention_years: 7
+  - travel_rule_threshold_usd: 1000

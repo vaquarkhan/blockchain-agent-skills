@@ -1,0 +1,76 @@
+{
+  "name": "blockchain-agent-skills",
+  "displayName": "Blockchain Agent Skills",
+  "description": "Install blockchain agent skill packs, guardrails, MCP templates, chain presets, and examples into a VS Code workspace.",
+  "version": "0.2.0",
+  "publisher": "ViquarKhan",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "extensionKind": ["workspace"],
+  "categories": ["Other"],
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  },
+  "keywords": [
+    "blockchain",
+    "web3",
+    "ethereum",
+    "solana",
+    "agent-skills",
+    "mcp",
+    "cursor",
+    "copilot",
+    "defi",
+    "smart-contracts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vaquarkhan/blockchain-agent-skills.git"
+  },
+  "homepage": "https://github.com/vaquarkhan/blockchain-agent-skills",
+  "bugs": {
+    "url": "https://github.com/vaquarkhan/blockchain-agent-skills/issues"
+  },
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "blockchainSkills.installFullToolkit",
+        "title": "Blockchain Skills: Install Full Toolkit"
+      },
+      {
+        "command": "blockchainSkills.installCorePack",
+        "title": "Blockchain Skills: Install Core Pack"
+      },
+      {
+        "command": "blockchainSkills.installAgentAdapters",
+        "title": "Blockchain Skills: Install Agent Adapters"
+      },
+      {
+        "command": "blockchainSkills.installStarterPack",
+        "title": "Blockchain Skills: Install Starter Pack"
+      },
+      {
+        "command": "blockchainSkills.installMcpTemplates",
+        "title": "Blockchain Skills: Install MCP Templates"
+      },
+      {
+        "command": "blockchainSkills.scaffoldExample",
+        "title": "Blockchain Skills: Scaffold Example"
+      }
+    ],
+    "configuration": {
+      "title": "Blockchain Agent Skills",
+      "properties": {
+        "blockchainSkills.rawBaseUrl": {
+          "type": "string",
+          "default": "https://raw.githubusercontent.com/vaquarkhan/blockchain-agent-skills/main",
+          "description": "Raw GitHub base URL when local extension assets are unavailable."
+        }
+      }
+    }
+  }
+}

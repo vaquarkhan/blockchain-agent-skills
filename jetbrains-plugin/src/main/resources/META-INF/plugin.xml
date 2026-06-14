@@ -1,0 +1,17 @@
+<idea-plugin>
+    <id>com.vaquarkhan.blockchainskills</id>
+    <name>Blockchain Agent Skills</name>
+    <vendor>vaquarkhan</vendor>
+    <description><![CDATA[
+        Install blockchain agent skill packs, guardrails, MCP templates, chain presets, and examples into JetBrains IDE workspaces.
+    ]]></description>
+    <depends>com.intellij.modules.platform</depends>
+    <actions>
+        <action id="BlockchainSkills.InstallFullToolkit" class="com.vaquarkhan.blockchainskills.InstallFullToolkitAction" text="Install Full Toolkit"/>
+        <action id="BlockchainSkills.InstallCorePack" class="com.vaquarkhan.blockchainskills.InstallCorePackAction" text="Install Core Pack"/>
+        <action id="BlockchainSkills.InstallAgentAdapters" class="com.vaquarkhan.blockchainskills.InstallAgentAdaptersAction" text="Install Agent Adapters"/>
+        <action id="BlockchainSkills.InstallStarterPack" class="com.vaquarkhan.blockchainskills.InstallStarterPackAction" text="Install Starter Pack"/>
+        <action id="BlockchainSkills.InstallMcpTemplates" class="com.vaquarkhan.blockchainskills.InstallMcpTemplatesAction" text="Install MCP Templates"/>
+        <action id="BlockchainSkills.ScaffoldExample" class="com.vaquarkhan.blockchainskills.ScaffoldExampleAction" text="Scaffold Example"/>
+    </actions>
+</idea-plugin>

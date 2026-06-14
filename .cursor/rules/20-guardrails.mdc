@@ -1,0 +1,14 @@
+---
+description: Guardrail enforcement — sanctions, honeypot, unverified contracts
+globs:
+alwaysApply: true
+---
+
+# Guardrails
+
+Load and apply before writes:
+
+- `guardrails/transaction-safety.yaml` — value thresholds, gas limits, reorg depth
+- `guardrails/security.yaml` — blind signing block, honeypot/rug detection
+- `guardrails/compliance.yaml` — OFAC sanctions (no override), travel rule
+- `guardrails/denied-topics.yaml` — block exploit/sanctions-evasion requests

@@ -1,0 +1,31 @@
+name: evm-core-starter
+version: "0.1.0"
+description: Phase 1 EVM chains — Ethereum, Arbitrum, Base, Polygon
+
+skills:
+  - using-blockchain-agent-skills
+  - chain-abstraction
+  - transaction-lifecycle
+  - block-state-queries
+
+mcp_servers:
+  - evm-rpc-server
+
+guardrails:
+  - guardrails/transaction-safety.yaml
+  - guardrails/security.yaml
+
+preset: presets/evm-core/PRESET.md
+
+chains:
+  - ethereum
+  - arbitrum
+  - base
+  - polygon
+
+lifecycle:
+  - plan
+  - simulate
+  - confirm
+  - broadcast
+  - confirm-depth

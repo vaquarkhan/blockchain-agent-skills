@@ -29,6 +29,11 @@ build/
 .cdk.staging/
 cdk.out/
 node_modules/
+vscode-extension/*.vsix
+jetbrains-plugin/build/
+
+# Gradle
+.gradle/
 
 # Test / coverage
 .pytest_cache/

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "hooks": [
+    {
+      "name": "session-start",
+      "description": "Load guardrails at session start",
+      "script": "hooks/session-start.sh"
+    },
+    {
+      "name": "tx-simulate-pre",
+      "description": "Enforce simulate-before-broadcast",
+      "script": "hooks/tx-simulate-pre.sh"
+    },
+    {
+      "name": "mainnet-guard",
+      "description": "Mainnet operation confirmation gate",
+      "script": "hooks/mainnet-guard.sh"
+    }
+  ]
+}

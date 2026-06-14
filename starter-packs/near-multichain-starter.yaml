@@ -1,0 +1,19 @@
+name: near-multichain-starter
+version: "0.1.0"
+description: NEAR named accounts, NEP tokens, chain signatures
+
+skills:
+  - chain-abstraction
+  - transaction-lifecycle
+  - smart-contract-factory
+  - token-standards-engine
+
+mcp_servers:
+  - near-rpc-server
+
+preset: presets/near-mainnet/PRESET.md
+
+standards:
+  - NEP-141
+  - NEP-171
+  - NEP-330

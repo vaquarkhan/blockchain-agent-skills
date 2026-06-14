@@ -1,0 +1,13 @@
+---
+description: Enforce simulate-before-broadcast for all chain write operations
+globs:
+alwaysApply: true
+---
+
+# Simulate First
+
+Before any transaction broadcast:
+
+1. Run chain-specific simulation (`eth_call`, `simulateTransaction`, NEAR dry-run).
+2. Decode revert reasons structurally — do not broadcast on failure.
+3. Log simulation result to audit trail before signing via KMS/HSM.
