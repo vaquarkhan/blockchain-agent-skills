@@ -1,5 +1,5 @@
 {
-  "version": "0.3.1",
+  "version": "0.4.0",
   "chains": {
     "ethereum": {"chainId": "1", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
     "arbitrum": {"chainId": "42161", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
@@ -23,6 +23,8 @@
     "ton": {"chainId": "mainnet", "vm": "tvm", "phase": 4, "mcp": "ton-rpc-server"},
     "polkadot": {"chainId": "polkadot", "vm": "substrate", "phase": 4, "mcp": "substrate-rpc-server"},
     "kusama": {"chainId": "kusama", "vm": "substrate", "phase": 4, "mcp": "substrate-rpc-server"},
-    "moonbeam": {"chainId": "moonbeam", "vm": "substrate", "phase": 4, "mcp": "substrate-rpc-server"}
+    "moonbeam": {"chainId": "moonbeam", "vm": "substrate", "phase": 4, "mcp": "substrate-rpc-server"},
+    "hedera": {"chainId": "mainnet", "vm": "evm", "phase": 5, "mcp": "hedera-rpc-server"},
+    "lightning": {"chainId": "mainnet", "vm": "utxo", "phase": 5, "mcp": "bitcoin-rpc-server"}
   }
 }

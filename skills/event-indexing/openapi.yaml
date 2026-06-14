@@ -1,0 +1,42 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "event-indexing",
+    "version": "0.4.0"
+  },
+  "paths": {
+    "/indexPlan": {
+      "post": {
+        "operationId": "indexPlan",
+        "summary": "Plan event indexing pipeline",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chain_name": {
+                    "type": "string"
+                  },
+                  "contract_address": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chain_name",
+                  "contract_address"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

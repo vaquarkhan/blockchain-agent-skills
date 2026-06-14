@@ -137,7 +137,12 @@ object InstallerData {
         "EVM" to listOf("mcp/evm-rpc.mcp.json"),
         "Solana" to listOf("mcp/solana-rpc.mcp.json"),
         "NEAR" to listOf("mcp/near-rpc.mcp.json"),
-        "Cosmos" to listOf("mcp/cosmos-rpc.mcp.json")
+        "Cosmos" to listOf("mcp/cosmos-rpc.mcp.json"),
+        "Move" to listOf("mcp/move-rpc.mcp.json"),
+        "Bitcoin" to listOf("mcp/bitcoin-rpc.mcp.json"),
+        "TON" to listOf("mcp/ton-rpc.mcp.json"),
+        "Substrate" to listOf("mcp/substrate-rpc.mcp.json"),
+        "Hedera" to listOf("mcp/hedera-rpc.mcp.json")
     )
 
     val runnableExamples = linkedMapOf(

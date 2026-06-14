@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0
+
+- Bedrock AgentCore Lambda handlers with per-skill artifacts (manifest, OpenAPI, action groups)
+- Hedera and Lightning chain providers; 24-chain registry
+- Hedera MCP server (mirror node reads); Lightning tools on bitcoin-rpc-server (LND REST)
+- Nine MCP installer templates across VS Code and JetBrains (Move, Bitcoin, TON, Substrate, Hedera)
+- Architecture diagrams in `images/`
+
 ## 0.3.1
 
 - Phase 3–4 chain providers (Move, Bitcoin, TON, Substrate) and 22-chain registry

@@ -1,0 +1,22 @@
+{
+  "actionGroupName": "storage-state-proofs",
+  "description": "Bedrock action group for storage-state-proofs",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-storage-state-proofs"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "proofPlan",
+        "description": "Plan storage proof collection",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

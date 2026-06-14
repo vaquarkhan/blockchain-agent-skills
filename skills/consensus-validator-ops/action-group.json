@@ -1,0 +1,22 @@
+{
+  "actionGroupName": "consensus-validator-ops",
+  "description": "Bedrock action group for consensus-validator-ops",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-consensus-validator-ops"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "validatorRotationPlan",
+        "description": "Return validator rotation template refs",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

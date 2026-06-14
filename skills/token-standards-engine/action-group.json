@@ -1,0 +1,22 @@
+{
+  "actionGroupName": "token-standards-engine",
+  "description": "Bedrock action group for token-standards-engine",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-token-standards-engine"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "tokenStandardInfo",
+        "description": "Return token standards for chain",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

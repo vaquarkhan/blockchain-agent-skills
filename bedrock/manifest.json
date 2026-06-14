@@ -1,0 +1,112 @@
+{
+  "version": "0.4.0",
+  "skills": [
+    {
+      "name": "using-blockchain-agent-skills",
+      "phase": "meta",
+      "mcp_tools": [],
+      "functions": [
+        {"name": "routeSkill", "description": "Route user intent to primary skill", "parameters": ["intent"]},
+        {"name": "listSkills", "description": "List available skills by phase", "parameters": []}
+      ]
+    },
+    {
+      "name": "chain-abstraction",
+      "phase": 1,
+      "mcp_tools": ["evm-rpc-server", "solana-rpc-server", "near-rpc-server", "cosmos-rpc-server"],
+      "functions": [
+        {"name": "resolveChain", "description": "Resolve chain metadata", "parameters": ["chain_name"]},
+        {"name": "validateAddress", "description": "Validate address for chain", "parameters": ["chain_name", "address"]}
+      ]
+    },
+    {
+      "name": "transaction-lifecycle",
+      "phase": 1,
+      "mcp_tools": ["evm-rpc-server"],
+      "functions": [
+        {"name": "planTransaction", "description": "Emit tx plan checklist", "parameters": ["chain_name", "operation"]},
+        {"name": "checkSimulateReady", "description": "Verify simulate-first prerequisites", "parameters": ["chain_name"]}
+      ]
+    },
+    {
+      "name": "block-state-queries",
+      "phase": 1,
+      "mcp_tools": ["evm-rpc-server"],
+      "functions": [
+        {"name": "queryPlan", "description": "Plan a read query with MCP tool mapping", "parameters": ["chain_name", "query_type"]}
+      ]
+    },
+    {
+      "name": "smart-contract-factory",
+      "phase": 2,
+      "mcp_tools": ["evm-rpc-server", "solana-rpc-server"],
+      "functions": [
+        {"name": "deployChecklist", "description": "Return contract deploy checklist refs", "parameters": ["chain_name", "language"]}
+      ]
+    },
+    {
+      "name": "event-indexing",
+      "phase": 2,
+      "mcp_tools": ["evm-rpc-server"],
+      "functions": [
+        {"name": "indexPlan", "description": "Plan event indexing pipeline", "parameters": ["chain_name", "contract_address"]}
+      ]
+    },
+    {
+      "name": "token-standards-engine",
+      "phase": 2,
+      "mcp_tools": ["evm-rpc-server", "solana-rpc-server"],
+      "functions": [
+        {"name": "tokenStandardInfo", "description": "Return token standards for chain", "parameters": ["chain_name"]}
+      ]
+    },
+    {
+      "name": "rollup-operations",
+      "phase": 3,
+      "mcp_tools": ["evm-rpc-server"],
+      "functions": [
+        {"name": "rollupRoute", "description": "Return L2 bridge/withdraw planning refs", "parameters": ["l2_chain"]}
+      ]
+    },
+    {
+      "name": "data-availability",
+      "phase": 3,
+      "mcp_tools": [],
+      "functions": [
+        {"name": "daPosture", "description": "Return DA layer guidance", "parameters": ["da_layer"]}
+      ]
+    },
+    {
+      "name": "privacy-zk",
+      "phase": 3,
+      "mcp_tools": [],
+      "functions": [
+        {"name": "zkWorkflow", "description": "Return ZK workflow checklist", "parameters": ["proof_system"]}
+      ]
+    },
+    {
+      "name": "storage-state-proofs",
+      "phase": 3,
+      "mcp_tools": ["evm-rpc-server"],
+      "functions": [
+        {"name": "proofPlan", "description": "Plan storage proof collection", "parameters": ["chain_name"]}
+      ]
+    },
+    {
+      "name": "consensus-validator-ops",
+      "phase": 4,
+      "mcp_tools": [],
+      "functions": [
+        {"name": "validatorRotationPlan", "description": "Return validator rotation template refs", "parameters": ["chain_name"]}
+      ]
+    },
+    {
+      "name": "network-monitoring",
+      "phase": 4,
+      "mcp_tools": ["evm-rpc-server", "substrate-rpc-server"],
+      "functions": [
+        {"name": "monitoringPlan", "description": "Return network monitoring checklist", "parameters": ["chain_name"]}
+      ]
+    }
+  ]
+}

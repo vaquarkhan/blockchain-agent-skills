@@ -1,0 +1,42 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "block-state-queries",
+    "version": "0.4.0"
+  },
+  "paths": {
+    "/queryPlan": {
+      "post": {
+        "operationId": "queryPlan",
+        "summary": "Plan a read query with MCP tool mapping",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chain_name": {
+                    "type": "string"
+                  },
+                  "query_type": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chain_name",
+                  "query_type"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

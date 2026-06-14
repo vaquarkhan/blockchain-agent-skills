@@ -137,7 +137,12 @@ const MCP_TEMPLATES = {
   EVM: ["mcp/evm-rpc.mcp.json"],
   Solana: ["mcp/solana-rpc.mcp.json"],
   NEAR: ["mcp/near-rpc.mcp.json"],
-  Cosmos: ["mcp/cosmos-rpc.mcp.json"]
+  Cosmos: ["mcp/cosmos-rpc.mcp.json"],
+  Move: ["mcp/move-rpc.mcp.json"],
+  Bitcoin: ["mcp/bitcoin-rpc.mcp.json"],
+  TON: ["mcp/ton-rpc.mcp.json"],
+  Substrate: ["mcp/substrate-rpc.mcp.json"],
+  Hedera: ["mcp/hedera-rpc.mcp.json"]
 };
 
 const RUNNABLE_EXAMPLES = {

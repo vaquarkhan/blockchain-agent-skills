@@ -18,6 +18,7 @@ SERVERS = [
     "mcp/bitcoin-rpc-server/server.py",
     "mcp/ton-rpc-server/server.py",
     "mcp/substrate-rpc-server/server.py",
+    "mcp/hedera-rpc-server/server.py",
 ]
 
 

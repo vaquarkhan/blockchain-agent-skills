@@ -1,0 +1,27 @@
+{
+  "actionGroupName": "event-indexing",
+  "description": "Bedrock action group for event-indexing",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-event-indexing"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "indexPlan",
+        "description": "Plan event indexing pipeline",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "contract_address",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

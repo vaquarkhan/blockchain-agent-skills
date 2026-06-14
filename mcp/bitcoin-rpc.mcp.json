@@ -6,12 +6,14 @@
     "command": "python",
     "args": ["mcp/bitcoin-rpc-server/server.py"],
     "env": {
-      "BITCOIN_RPC_URL": "${BITCOIN_RPC_URL}"
+      "BITCOIN_RPC_URL": "${BITCOIN_RPC_URL}",
+      "LND_REST_URL": "${LND_REST_URL}",
+      "LND_MACAROON": "${LND_MACAROON}"
     }
   },
   "metadata": {
-    "chains": ["bitcoin"],
+    "chains": ["bitcoin", "lightning"],
     "validation": ["python scripts/validate-mcp-servers.py"],
-    "best_for": ["getblockchaininfo", "getrawtransaction"]
+    "best_for": ["getblockchaininfo", "getrawtransaction", "lightning_getinfo", "lightning_decodepay"]
   }
 }

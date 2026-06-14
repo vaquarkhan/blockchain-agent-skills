@@ -1,6 +1,6 @@
 # Coverage Roadmap
 
-Implementation status as of **v0.3.1**. See [TECHNICAL-REFERENCE.md](TECHNICAL-REFERENCE.md).
+Implementation status as of **v0.4.0**. See [TECHNICAL-REFERENCE.md](TECHNICAL-REFERENCE.md).
 
 ## Phase 1 — EVM Core (implemented)
 
@@ -13,7 +13,7 @@ Implementation status as of **v0.3.1**. See [TECHNICAL-REFERENCE.md](TECHNICAL-R
 | ChainProvider + EVM adapters | Done |
 | MCP `server.py` + schema parity | Done |
 | Simulate-first + guardrails | Done |
-| Bedrock Lambda templates | Template scaffold in `templates/skill-definition.yaml` |
+| Bedrock Lambda templates | Done — `bedrock/manifest.json`, unified handler, per-skill artifacts |
 
 ## Phase 2 — Alt-L1s (implemented)
 
@@ -51,13 +51,29 @@ Implementation status as of **v0.3.1**. See [TECHNICAL-REFERENCE.md](TECHNICAL-R
 | ChainProvider metadata | Done |
 | Validator key rotation templates | Done (`templates/validator-rotation-plan.yaml`) |
 
+## Phase 5 — Bedrock & extended chains (implemented)
+
+**Chains:** Hedera, Lightning (LND REST on bitcoin-rpc-server)  
+**MCP:** hedera-rpc-server (mirror node reads); Lightning tools on bitcoin-rpc-server  
+**Bedrock:** Unified Lambda handler + 13 skill action groups (`scripts/sync_bedrock_artifacts.py`)
+
+| Component | Status |
+| --- | --- |
+| Hedera ChainProvider + MCP | Done |
+| Lightning metadata + LND tools | Done |
+| Bedrock manifest + validation | Done |
+| Installer MCP templates (9 families) | Done |
+
 ## Validation
 
 ```bash
 python scripts/validate-skills.py
 python scripts/validate-assets.py
 python scripts/validate-mcp-servers.py
+python scripts/sync_bedrock_artifacts.py
+python scripts/validate-bedrock-handlers.py
 python tests/test_chain_providers.py
+python tests/test_bedrock_handlers.py
 python tests/test_mcp_servers.py
 python evals/run.py
 ```

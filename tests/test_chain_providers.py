@@ -76,6 +76,26 @@ def test_substrate_resolve():
     assert meta.mcp_server == "substrate-rpc-server"
 
 
+def test_lightning_resolve():
+    meta = resolve_chain("lightning")
+    assert meta.mcp_server == "bitcoin-rpc-server"
+    assert meta.confirmation_depth == 3
+    assert meta.native_currency == "BTC"
+
+
+def test_hedera_resolve():
+    meta = resolve_chain("hedera")
+    assert meta.mcp_server == "hedera-rpc-server"
+    assert meta.native_currency == "HBAR"
+    assert "HTS" in meta.token_standards
+
+
+def test_hedera_address():
+    assert validate_address("hedera", "0.0.12345")
+    assert validate_address("hedera", "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb0")
+    assert not validate_address("hedera", "invalid")
+
+
 if __name__ == "__main__":
     test_evm_resolve()
     test_evm_address()
@@ -89,4 +109,7 @@ if __name__ == "__main__":
     test_bitcoin_resolve()
     test_ton_resolve()
     test_substrate_resolve()
-    print("All 12 tests passed")
+    test_lightning_resolve()
+    test_hedera_resolve()
+    test_hedera_address()
+    print("All 15 tests passed")

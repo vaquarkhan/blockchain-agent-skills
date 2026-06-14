@@ -1,0 +1,61 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "using-blockchain-agent-skills",
+    "version": "0.4.0"
+  },
+  "paths": {
+    "/routeSkill": {
+      "post": {
+        "operationId": "routeSkill",
+        "summary": "Route user intent to primary skill",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "intent": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "intent"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/listSkills": {
+      "post": {
+        "operationId": "listSkills",
+        "summary": "List available skills by phase",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

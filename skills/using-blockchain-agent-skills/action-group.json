@@ -1,0 +1,27 @@
+{
+  "actionGroupName": "using-blockchain-agent-skills",
+  "description": "Bedrock action group for using-blockchain-agent-skills",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-using-blockchain-agent-skills"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "routeSkill",
+        "description": "Route user intent to primary skill",
+        "parameters": [
+          {
+            "name": "intent",
+            "type": "string",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "listSkills",
+        "description": "List available skills by phase",
+        "parameters": []
+      }
+    ]
+  }
+}

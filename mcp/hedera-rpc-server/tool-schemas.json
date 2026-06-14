@@ -1,0 +1,22 @@
+{
+  "tools": [
+    {
+      "name": "getAccount",
+      "description": "Returns Hedera account balance and metadata from mirror node.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["account_id"],
+        "properties": {"account_id": {"type": "string"}}
+      }
+    },
+    {
+      "name": "getBlock",
+      "description": "Returns Hedera block metadata by number.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["block_number"],
+        "properties": {"block_number": {"type": "integer"}}
+      }
+    }
+  ]
+}

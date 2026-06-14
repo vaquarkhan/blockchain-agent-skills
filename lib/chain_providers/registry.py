@@ -6,6 +6,7 @@ from .base import ChainMetadata, VMType
 from .bitcoin import BitcoinChainProvider
 from .cosmos import CosmosChainProvider, _COSMOS_CHAINS
 from .evm import EVMChainProvider, _EVM_CHAINS
+from .hedera import HederaChainProvider
 from .move import MoveChainProvider, _MOVE_CHAINS
 from .near import NEARChainProvider
 from .solana import SolanaChainProvider
@@ -16,6 +17,7 @@ _EVM = EVMChainProvider()
 _SOLANA = SolanaChainProvider()
 _NEAR = NEARChainProvider()
 _MOVE = MoveChainProvider()
+_HEDERA = HederaChainProvider()
 _BITCOIN = BitcoinChainProvider()
 _TON = TonChainProvider()
 _SUBSTRATE = SubstrateChainProvider()
@@ -33,6 +35,10 @@ _CHAIN_TO_VM.update(
         **{name: VMType.MOVE for name in _MOVE_CHAINS},
         "bitcoin": VMType.UTXO,
         "btc": VMType.UTXO,
+        "lightning": VMType.UTXO,
+        "ln": VMType.UTXO,
+        "hedera": VMType.EVM,
+        "hbar": VMType.EVM,
         "ton": VMType.TVM,
         **{name: VMType.SUBSTRATE for name in _SUBSTRATE_CHAINS},
     }
@@ -44,6 +50,8 @@ def resolve_chain(chain_name: str) -> ChainMetadata:
     key = chain_name.lower().strip()
     if key in ("near", "aurora"):
         return _NEAR.resolve(key)
+    if key in ("hedera", "hbar"):
+        return _HEDERA.resolve(key)
     vm = _CHAIN_TO_VM.get(key)
     if vm == VMType.EVM:
         return _EVM.resolve(key)
@@ -64,6 +72,9 @@ def resolve_chain(chain_name: str) -> ChainMetadata:
 
 def validate_address(chain_name: str, address: str) -> bool:
     """Validate address for the given chain."""
+    key = chain_name.lower().strip()
+    if key in ("hedera", "hbar"):
+        return _HEDERA.validate_address(address)
     meta = resolve_chain(chain_name)
     if meta.vm_type == VMType.EVM:
         return _EVM.validate_address(address)

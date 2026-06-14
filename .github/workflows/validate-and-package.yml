@@ -47,6 +47,12 @@ jobs:
       - name: Validate MCP server implementations
         run: python scripts/validate-mcp-servers.py
 
+      - name: Sync and validate Bedrock handlers
+        run: |
+          python scripts/sync_bedrock_artifacts.py
+          python scripts/validate-bedrock-handlers.py
+          python tests/test_bedrock_handlers.py
+
       - name: Run chain provider and MCP tests
         run: |
           python tests/test_chain_providers.py

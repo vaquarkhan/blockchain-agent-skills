@@ -86,7 +86,12 @@
     {"label": "EVM", "path": "mcp/evm-rpc.mcp.json"},
     {"label": "Solana", "path": "mcp/solana-rpc.mcp.json"},
     {"label": "NEAR", "path": "mcp/near-rpc.mcp.json"},
-    {"label": "Cosmos", "path": "mcp/cosmos-rpc.mcp.json"}
+    {"label": "Cosmos", "path": "mcp/cosmos-rpc.mcp.json"},
+    {"label": "Move", "path": "mcp/move-rpc.mcp.json"},
+    {"label": "Bitcoin", "path": "mcp/bitcoin-rpc.mcp.json"},
+    {"label": "TON", "path": "mcp/ton-rpc.mcp.json"},
+    {"label": "Substrate", "path": "mcp/substrate-rpc.mcp.json"},
+    {"label": "Hedera", "path": "mcp/hedera-rpc.mcp.json"}
   ],
   "install_surfaces": {
     "core_files": [
@@ -292,7 +297,7 @@
     ".claude-plugin/blockchain-adoption.manifest.json"
   ],
   "catalog": {
-    "version": "0.2.0",
+    "version": "0.4.0",
     "skills": [
       {"name": "using-blockchain-agent-skills", "path": "skills/using-blockchain-agent-skills", "phase": "meta", "category": "orchestration"},
       {"name": "chain-abstraction", "path": "skills/chain-abstraction", "phase": 1, "category": "infrastructure"},
@@ -314,9 +319,10 @@
       {"name": "near-rpc-server", "path": "mcp/near-rpc-server", "status": "implemented", "tools": 4},
       {"name": "cosmos-rpc-server", "path": "mcp/cosmos-rpc-server", "status": "implemented", "tools": 4},
       {"name": "move-rpc-server", "path": "mcp/move-rpc-server", "status": "implemented", "tools": 2},
-      {"name": "bitcoin-rpc-server", "path": "mcp/bitcoin-rpc-server", "status": "implemented", "tools": 2},
+      {"name": "bitcoin-rpc-server", "path": "mcp/bitcoin-rpc-server", "status": "implemented", "tools": 4},
       {"name": "ton-rpc-server", "path": "mcp/ton-rpc-server", "status": "implemented", "tools": 1},
-      {"name": "substrate-rpc-server", "path": "mcp/substrate-rpc-server", "status": "implemented", "tools": 2}
+      {"name": "substrate-rpc-server", "path": "mcp/substrate-rpc-server", "status": "implemented", "tools": 2},
+      {"name": "hedera-rpc-server", "path": "mcp/hedera-rpc-server", "status": "implemented", "tools": 2}
     ],
     "chain_providers": {"path": "lib/chain_providers", "registry": "registry/chains.json"},
     "agents": [

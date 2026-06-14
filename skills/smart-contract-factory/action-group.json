@@ -1,0 +1,27 @@
+{
+  "actionGroupName": "smart-contract-factory",
+  "description": "Bedrock action group for smart-contract-factory",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-smart-contract-factory"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "deployChecklist",
+        "description": "Return contract deploy checklist refs",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "language",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

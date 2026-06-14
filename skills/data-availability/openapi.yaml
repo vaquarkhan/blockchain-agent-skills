@@ -1,0 +1,38 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "data-availability",
+    "version": "0.4.0"
+  },
+  "paths": {
+    "/daPosture": {
+      "post": {
+        "operationId": "daPosture",
+        "summary": "Return DA layer guidance",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "da_layer": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "da_layer"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

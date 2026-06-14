@@ -1,0 +1,38 @@
+{
+  "actionGroupName": "chain-abstraction",
+  "description": "Bedrock action group for chain-abstraction",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-chain-abstraction"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "resolveChain",
+        "description": "Resolve chain metadata",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "validateAddress",
+        "description": "Validate address for chain",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "address",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

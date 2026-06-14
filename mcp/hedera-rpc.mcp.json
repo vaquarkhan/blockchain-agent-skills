@@ -1,0 +1,17 @@
+{
+  "name": "hedera-rpc",
+  "description": "Hedera Mirror Node REST for account and block queries.",
+  "transport": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["mcp/hedera-rpc-server/server.py"],
+    "env": {
+      "HEDERA_MIRROR_URL": "${HEDERA_MIRROR_URL}"
+    }
+  },
+  "metadata": {
+    "chains": ["hedera"],
+    "validation": ["python scripts/validate-mcp-servers.py"],
+    "best_for": ["getAccount", "getBlock"]
+  }
+}

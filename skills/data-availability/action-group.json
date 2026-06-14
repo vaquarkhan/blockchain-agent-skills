@@ -1,0 +1,22 @@
+{
+  "actionGroupName": "data-availability",
+  "description": "Bedrock action group for data-availability",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-data-availability"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "daPosture",
+        "description": "Return DA layer guidance",
+        "parameters": [
+          {
+            "name": "da_layer",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

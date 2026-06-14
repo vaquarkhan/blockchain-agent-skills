@@ -13,6 +13,20 @@
         "required": ["txid"],
         "properties": {"txid": {"type": "string"}, "verbose": {"type": "boolean"}}
       }
+    },
+    {
+      "name": "lightning_getinfo",
+      "description": "Returns Lightning node info via LND REST.",
+      "inputSchema": {"type": "object", "properties": {}}
+    },
+    {
+      "name": "lightning_decodepay",
+      "description": "Decodes a BOLT11 payment request via LND REST.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["pay_req"],
+        "properties": {"pay_req": {"type": "string"}}
+      }
     }
   ]
 }

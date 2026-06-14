@@ -1,0 +1,27 @@
+{
+  "actionGroupName": "block-state-queries",
+  "description": "Bedrock action group for block-state-queries",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-block-state-queries"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "queryPlan",
+        "description": "Plan a read query with MCP tool mapping",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "query_type",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

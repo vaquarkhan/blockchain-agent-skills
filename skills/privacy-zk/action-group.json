@@ -1,0 +1,22 @@
+{
+  "actionGroupName": "privacy-zk",
+  "description": "Bedrock action group for privacy-zk",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-privacy-zk"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "zkWorkflow",
+        "description": "Return ZK workflow checklist",
+        "parameters": [
+          {
+            "name": "proof_system",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

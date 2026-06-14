@@ -1,0 +1,17 @@
+name: token-standards-engine
+version: "0.4.0"
+phase: 2
+frameworks:
+  - bedrock-agentcore
+  - mcp
+mcp_tools:
+  - evm-rpc-server
+  - solana-rpc-server
+guardrail_refs:
+  - guardrails/transaction-safety.yaml
+  - guardrails/security.yaml
+  - guardrails/compliance.yaml
+bedrock:
+  handler: bedrock/lambda/handler.py
+  action_group: action-group.json
+  openapi: openapi.yaml

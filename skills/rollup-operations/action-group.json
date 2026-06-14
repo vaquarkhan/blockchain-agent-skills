@@ -1,0 +1,22 @@
+{
+  "actionGroupName": "rollup-operations",
+  "description": "Bedrock action group for rollup-operations",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-rollup-operations"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "rollupRoute",
+        "description": "Return L2 bridge/withdraw planning refs",
+        "parameters": [
+          {
+            "name": "l2_chain",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

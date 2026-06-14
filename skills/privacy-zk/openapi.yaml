@@ -1,0 +1,38 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "privacy-zk",
+    "version": "0.4.0"
+  },
+  "paths": {
+    "/zkWorkflow": {
+      "post": {
+        "operationId": "zkWorkflow",
+        "summary": "Return ZK workflow checklist",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "proof_system": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "proof_system"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

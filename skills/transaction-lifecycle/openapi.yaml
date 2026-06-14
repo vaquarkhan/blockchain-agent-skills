@@ -1,0 +1,71 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "transaction-lifecycle",
+    "version": "0.4.0"
+  },
+  "paths": {
+    "/planTransaction": {
+      "post": {
+        "operationId": "planTransaction",
+        "summary": "Emit tx plan checklist",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chain_name": {
+                    "type": "string"
+                  },
+                  "operation": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chain_name",
+                  "operation"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/checkSimulateReady": {
+      "post": {
+        "operationId": "checkSimulateReady",
+        "summary": "Verify simulate-first prerequisites",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chain_name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "chain_name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

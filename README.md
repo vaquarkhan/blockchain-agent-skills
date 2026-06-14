@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/Skills-12%20%2B%201%20meta-brightgreen.svg)](#core-skills)
 [![Presets](https://img.shields.io/badge/Presets-4-blue.svg)](#platform-presets)
-[![MCP Servers](https://img.shields.io/badge/MCP%20Servers-8%20implemented-brightgreen.svg)](#mcp-servers)
+[![MCP Servers](https://img.shields.io/badge/MCP%20Servers-9%20implemented-brightgreen.svg)](#mcp-servers)
 [![Examples](https://img.shields.io/badge/Examples-4%20(3%20runnable)-purple.svg)](#examples)
 [![Starter Packs](https://img.shields.io/badge/Starter%20Packs-5-red.svg)](#starter-packs)
 [![Validate and Package](https://github.com/vaquarkhan/blockchain-agent-skills/actions/workflows/validate-and-package.yml/badge.svg?branch=main)](https://github.com/vaquarkhan/blockchain-agent-skills/actions/workflows/validate-and-package.yml)
@@ -51,6 +51,17 @@ python tests/test_chain_providers.py
 ### 4. Lifecycle
 
 `/plan` → `/simulate` → `/confirm` → `/broadcast` → `/confirm-depth`
+
+![Simulate-first lifecycle](images/simulate-first-lifecycle.png)
+
+## Architecture
+
+![Blockchain skills architecture](images/blockchain-skills-architecture.png)
+
+- **13 skills** (12 domain + meta orchestrator) with Bedrock action groups under `skills/*/`
+- **9 MCP RPC servers** (34 tools) with simulate-first write guardrails on broadcast paths
+- **24 chains** via `lib/chain_providers` and `registry/chains.json`
+- **Installers** — VS Code `.vsix`, JetBrains plugin, shell/PowerShell scripts
 
 ## Install Surfaces
 

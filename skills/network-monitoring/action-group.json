@@ -1,0 +1,22 @@
+{
+  "actionGroupName": "network-monitoring",
+  "description": "Bedrock action group for network-monitoring",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-network-monitoring"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "monitoringPlan",
+        "description": "Return network monitoring checklist",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}

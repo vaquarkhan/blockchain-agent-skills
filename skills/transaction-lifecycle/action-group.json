@@ -1,0 +1,38 @@
+{
+  "actionGroupName": "transaction-lifecycle",
+  "description": "Bedrock action group for transaction-lifecycle",
+  "actionGroupExecutor": {
+    "lambda": "arn:aws:lambda:{region}:{account}:function:blockchain-transaction-lifecycle"
+  },
+  "functionSchema": {
+    "functions": [
+      {
+        "name": "planTransaction",
+        "description": "Emit tx plan checklist",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "operation",
+            "type": "string",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "checkSimulateReady",
+        "description": "Verify simulate-first prerequisites",
+        "parameters": [
+          {
+            "name": "chain_name",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
+}
