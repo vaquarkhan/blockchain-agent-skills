@@ -1,0 +1,22 @@
+name: mainnet-readiness
+version: "0.1.0"
+description: Pre-mainnet checklist for contract deploys and high-value transactions
+
+network: mainnet
+chain_family: evm
+
+readiness:
+  simulation_passed: false
+  gas_estimated: false
+  access_control_reviewed: false
+  upgrade_path_documented: false
+  kms_signing_configured: false
+  confirmation_depth_defined: false
+  incident_runbook_linked: false
+  compliance_review_complete: false
+
+thresholds:
+  human_confirmation_required_usd: 10000
+  min_confidence_score: HIGH
+
+notes: ""

@@ -1,0 +1,21 @@
+name: compliance-screening
+version: "0.2.0"
+description: Sanctions and travel-rule screening record
+
+transaction:
+  chain: ""
+  from: ""
+  to: ""
+  value_usd: 0
+
+screening:
+  ofac_checked: false
+  travel_rule_applicable: false
+  denied_topic_scan: false
+  evidence_uri: ""
+
+decision:
+  allowed: false
+  reviewer: ""
+  timestamp_utc: ""
+  notes: ""

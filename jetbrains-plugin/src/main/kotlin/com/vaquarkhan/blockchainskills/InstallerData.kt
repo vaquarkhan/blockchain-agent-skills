@@ -10,6 +10,7 @@ object InstallerData {
         "registry/assets.json",
         "registry/chains.json",
         "requirements.txt",
+        "requirements-proof.txt",
         "docs/getting-started.md",
         "docs/codex-setup.md",
         "scripts/install.sh",
@@ -20,6 +21,7 @@ object InstallerData {
         "hooks/README.md",
         "hooks/hooks.json",
         "hooks/session-start.sh",
+        "hooks/session-start.ps1",
         "hooks/tx-simulate-pre.sh",
         "hooks/mainnet-guard.sh",
         "guardrails/transaction-safety.yaml",
@@ -28,6 +30,9 @@ object InstallerData {
         "guardrails/denied-topics.yaml",
         "templates/skill-definition.yaml",
         "templates/tx-plan.yaml",
+        "templates/incident-runbook.md",
+        "templates/release-gate-evidence.yaml",
+        "templates/mainnet-readiness.yaml",
         "bootstrap.sh",
         "bootstrap.ps1"
     )
@@ -48,15 +53,51 @@ object InstallerData {
             "CLAUDE.md"
         ),
         "Copilot" to listOf(".github/copilot-instructions.md", "AGENTS.md"),
-        "Codex" to listOf("AGENTS.md", "CLAUDE.md", "skills-index.md", "docs/getting-started.md", "docs/codex-setup.md"),
-        "Windsurf" to listOf(".windsurfrules.example", "docs/windsurf-setup.md", "docs/getting-started.md")
+        "Gemini" to listOf(
+            ".gemini/commands/spec.md",
+            ".gemini/commands/plan.md",
+            ".gemini/commands/build.md",
+            ".gemini/commands/test.md",
+            ".gemini/commands/validate.md",
+            ".gemini/commands/backfill.md",
+            ".gemini/commands/review.md",
+            ".gemini/commands/ship.md"
+        ),
+        "Kiro" to listOf(
+            ".kiro/steering/product.md",
+            ".kiro/steering/tech.md",
+            ".kiro/steering/structure.md",
+            "docs/kiro-setup.md",
+            "AGENTS.md",
+            "CLAUDE.md"
+        ),
+        "Codex" to listOf(
+            "AGENTS.md",
+            "CLAUDE.md",
+            "skills-index.md",
+            "docs/getting-started.md",
+            "docs/codex-setup.md"
+        ),
+        "OpenCode" to listOf(
+            "AGENTS.md",
+            "CLAUDE.md",
+            ".opencode/README.md",
+            ".opencode/skills",
+            "docs/opencode-setup.md",
+            "docs/getting-started.md"
+        ),
+        "Windsurf" to listOf(
+            ".windsurfrules.example",
+            "docs/windsurf-setup.md",
+            "docs/getting-started.md"
+        )
     )
 
     val starterPacks = linkedMapOf(
         "EVM Core" to listOf(
             "starter-packs/evm-core-starter.yaml",
             "presets/evm-core/PRESET.md",
-            "mcp/evm-rpc-server/config.yaml",
+            "mcp/evm-rpc.mcp.json",
             "guardrails/transaction-safety.yaml",
             "AGENTS.md",
             "skills-index.md"
@@ -64,21 +105,21 @@ object InstallerData {
         "Solana Programs" to listOf(
             "starter-packs/solana-programs-starter.yaml",
             "presets/solana-mainnet/PRESET.md",
-            "mcp/solana-rpc-server/config.yaml",
+            "mcp/solana-rpc.mcp.json",
             "AGENTS.md",
             "skills-index.md"
         ),
         "NEAR Multi-chain" to listOf(
             "starter-packs/near-multichain-starter.yaml",
             "presets/near-mainnet/PRESET.md",
-            "mcp/near-rpc-server/config.yaml",
+            "mcp/near-rpc.mcp.json",
             "AGENTS.md",
             "skills-index.md"
         ),
         "Cosmos IBC" to listOf(
             "starter-packs/cosmos-ibc-starter.yaml",
             "presets/cosmos-ibc/PRESET.md",
-            "mcp/cosmos-rpc-server/config.yaml",
+            "mcp/cosmos-rpc.mcp.json",
             "AGENTS.md",
             "skills-index.md"
         ),
@@ -93,20 +134,22 @@ object InstallerData {
     )
 
     val mcpTemplates = linkedMapOf(
-        "EVM" to listOf("mcp/evm-rpc-server/config.yaml", "mcp/evm-rpc-server/README.md"),
-        "Solana" to listOf("mcp/solana-rpc-server/config.yaml", "mcp/solana-rpc-server/tool-schemas.json"),
-        "NEAR" to listOf("mcp/near-rpc-server/config.yaml", "mcp/near-rpc-server/tool-schemas.json"),
-        "Cosmos" to listOf("mcp/cosmos-rpc-server/config.yaml", "mcp/cosmos-rpc-server/tool-schemas.json")
+        "EVM" to listOf("mcp/evm-rpc.mcp.json"),
+        "Solana" to listOf("mcp/solana-rpc.mcp.json"),
+        "NEAR" to listOf("mcp/near-rpc.mcp.json"),
+        "Cosmos" to listOf("mcp/cosmos-rpc.mcp.json")
     )
 
-    val examples = linkedMapOf(
+    val runnableExamples = linkedMapOf(
         "EVM ERC-20 Deploy" to listOf(
             "examples/evm-erc20-deploy/README.md",
             "examples/evm-erc20-deploy/spec.md",
             "examples/evm-erc20-deploy/plan.md",
             "examples/evm-erc20-deploy/tasks.md",
             "examples/evm-erc20-deploy/Makefile",
-            "examples/evm-erc20-deploy/contracts/Token.sol"
+            "examples/evm-erc20-deploy/contracts/Token.sol",
+            "scripts/validate-skills.py",
+            "requirements-proof.txt"
         ),
         "Chain Provider Validation" to listOf(
             "examples/chain-provider-validation/README.md",
@@ -114,19 +157,10 @@ object InstallerData {
             "examples/chain-provider-validation/plan.md",
             "examples/chain-provider-validation/tasks.md",
             "examples/chain-provider-validation/Makefile",
-            "tests/test_chain_providers.py"
-        ),
-        "Cosmos IBC Transfer" to listOf(
-            "examples/cosmos-ibc-transfer/README.md",
-            "examples/cosmos-ibc-transfer/spec.md",
-            "examples/cosmos-ibc-transfer/plan.md",
-            "examples/cosmos-ibc-transfer/tasks.md"
-        ),
-        "Solana SPL Token" to listOf(
-            "examples/solana-spl-token/README.md",
-            "examples/solana-spl-token/spec.md",
-            "examples/solana-spl-token/plan.md",
-            "examples/solana-spl-token/tasks.md"
+            "lib/chain_providers",
+            "tests/test_chain_providers.py",
+            "scripts/validate-skills.py",
+            "requirements-proof.txt"
         )
     )
 }

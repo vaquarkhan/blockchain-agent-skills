@@ -1,0 +1,13 @@
+{
+  "tools": [
+    {
+      "name": "getAddressInformation",
+      "description": "Returns TON address balance and state.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["address"],
+        "properties": {"address": {"type": "string"}}
+      }
+    }
+  ]
+}

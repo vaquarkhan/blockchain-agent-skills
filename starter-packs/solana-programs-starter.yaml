@@ -13,6 +13,12 @@ mcp_servers:
 
 preset: presets/solana-mainnet/PRESET.md
 
+templates:
+  - templates/tx-plan.yaml
+  - templates/incident-runbook.md
+
+example: examples/solana-spl-token
+
 features:
   - anchor_idl
   - pda_derivation

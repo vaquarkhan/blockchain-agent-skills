@@ -1,0 +1,27 @@
+name: bridge-transfer-plan
+version: "0.2.0"
+description: Cross-chain bridge or L2 withdrawal plan
+
+route:
+  source_chain: ""
+  destination_chain: ""
+  asset: ""
+  amount: ""
+
+checks:
+  simulation:
+    source_tx_simulated: false
+    destination_delivery_verified: false
+  finality:
+    source_confirm_depth: 0
+    destination_confirm_depth: 0
+  guardrails:
+    value_threshold_review: false
+    sanctions_screening: false
+  rollback:
+    stuck_funds_procedure: ""
+    support_contacts: []
+
+signoff:
+  approver: ""
+  date_utc: ""

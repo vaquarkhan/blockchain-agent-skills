@@ -9,6 +9,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
+MIN_SKILL_LINES = 80
+REQUIRED_SECTIONS = (
+    "decision framework",
+    "anti-patterns",
+    "verification",
+)
 NAME_RE = re.compile(r"^[a-z0-9-]{1,64}$")
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---", re.DOTALL)
 
@@ -52,6 +58,13 @@ def validate_skill(skill_dir: Path) -> list[str]:
     line_count = len(text.splitlines())
     if line_count > 500:
         errors.append(f"{skill_dir.name}: SKILL.md is {line_count} lines (max 500)")
+    elif line_count < MIN_SKILL_LINES:
+        errors.append(f"{skill_dir.name}: SKILL.md is {line_count} lines (min {MIN_SKILL_LINES})")
+
+    body_lower = text.lower()
+    for section in REQUIRED_SECTIONS:
+        if section not in body_lower:
+            errors.append(f"{skill_dir.name}: missing required section '{section}'")
 
     return errors
 

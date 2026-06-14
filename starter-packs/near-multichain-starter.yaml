@@ -13,6 +13,12 @@ mcp_servers:
 
 preset: presets/near-mainnet/PRESET.md
 
+templates:
+  - templates/tx-plan.yaml
+  - templates/skill-definition.yaml
+
+example: examples/chain-provider-validation
+
 standards:
   - NEP-141
   - NEP-171

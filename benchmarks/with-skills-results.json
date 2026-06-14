@@ -1,0 +1,10 @@
+{
+  "evm_erc20_deploy": ["simulation", "mainnet", "gas", "access-control", "rollback"],
+  "solana_spl_mint": ["pda", "authority", "simulate", "priority-fees"],
+  "cosmos_ibc_transfer": ["channel", "timeout", "fees", "confirmation"],
+  "mainnet_guard": ["guardrails", "human-approval", "threshold", "simulate", "audit"],
+  "contract_upgrade": ["storage-layout", "simulation", "timelock", "rollback"],
+  "validator_slashing": ["kms", "downtime", "double-sign", "incident"],
+  "compliance_screening": ["sanctions", "audit", "retention", "approval"],
+  "rollup_batch": ["sequencer", "reorg", "simulate", "monitoring"]
+}

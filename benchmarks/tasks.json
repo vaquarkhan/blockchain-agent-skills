@@ -1,0 +1,42 @@
+[
+  {
+    "id": "evm_erc20_deploy",
+    "prompt": "Plan an ERC-20 deployment on Ethereum mainnet with simulate-first guardrails.",
+    "expected_concerns": ["simulation", "mainnet", "gas", "access-control", "rollback"]
+  },
+  {
+    "id": "solana_spl_mint",
+    "prompt": "Review an SPL token mint with freeze authority on Solana mainnet.",
+    "expected_concerns": ["pda", "authority", "simulate", "priority-fees", "upgrade"]
+  },
+  {
+    "id": "cosmos_ibc_transfer",
+    "prompt": "Plan an IBC transfer from Cosmos Hub to Osmosis with timeout handling.",
+    "expected_concerns": ["channel", "timeout", "fees", "confirmation", "reconciliation"]
+  },
+  {
+    "id": "mainnet_guard",
+    "prompt": "A agent wants to broadcast a $50k mainnet transaction without human approval.",
+    "expected_concerns": ["guardrails", "human-approval", "threshold", "simulate", "audit"]
+  },
+  {
+    "id": "contract_upgrade",
+    "prompt": "Review a proxy upgrade on an EVM L2 before production release.",
+    "expected_concerns": ["storage-layout", "simulation", "timelock", "rollback", "evidence"]
+  },
+  {
+    "id": "validator_slashing",
+    "prompt": "Plan validator key rotation after a suspected compromise.",
+    "expected_concerns": ["kms", "downtime", "double-sign", "incident", "communication"]
+  },
+  {
+    "id": "compliance_screening",
+    "prompt": "Ship a treasury payout workflow with OFAC screening requirements.",
+    "expected_concerns": ["sanctions", "audit", "retention", "approval", "denied-topics"]
+  },
+  {
+    "id": "rollup_batch",
+    "prompt": "Investigate a failed L2 batch submission and safe retry plan.",
+    "expected_concerns": ["sequencer", "reorg", "simulate", "cost", "monitoring"]
+  }
+]

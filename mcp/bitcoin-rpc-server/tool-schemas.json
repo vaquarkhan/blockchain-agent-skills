@@ -1,0 +1,18 @@
+{
+  "tools": [
+    {
+      "name": "getblockchaininfo",
+      "description": "Returns Bitcoin blockchain info.",
+      "inputSchema": {"type": "object", "properties": {}}
+    },
+    {
+      "name": "getrawtransaction",
+      "description": "Returns raw transaction by txid.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["txid"],
+        "properties": {"txid": {"type": "string"}, "verbose": {"type": "boolean"}}
+      }
+    }
+  ]
+}

@@ -1,7 +1,16 @@
 # Changelog
 
-## 0.2.0
+## 0.3.0
 
+- Full MCP server implementations (8 servers, 30 tools) with schema parity validation
+- Write guardrails (`SIMULATE_PASSED`, `HUMAN_CONFIRMED`) on broadcast tools
+- Skill depth expansion (80–190 lines, decision frameworks, anti-patterns, checklists)
+- Governance: VERSION, pre-commit, dependabot, provenance/SME review trail
+- 11 templates, 16 tutorials, 3 runnable examples
+- Blockchain-only hook_runner; removed DE case study artifacts
+- evals + benchmarks in CI
+
+## 0.2.0
 - Phase 2 Alt-L1 chain providers (Solana, NEAR, Cosmos)
 - MCP scaffolds for solana, near, cosmos RPC servers
 - VS Code extension and JetBrains plugin installers

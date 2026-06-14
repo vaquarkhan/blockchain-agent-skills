@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-echo "=== Blockchain Agent Skills — Session Start ==="
-echo "Guardrails: guardrails/transaction-safety.yaml, security.yaml, compliance.yaml"
-echo "Entry skill: skills/using-blockchain-agent-skills/SKILL.md"
-echo "Policy: simulate-first | no private keys in logs | sanctions screening required"
-exit 0
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+python "$SCRIPT_DIR/../scripts/hook_runner.py" session-start "${1:-$PWD}"

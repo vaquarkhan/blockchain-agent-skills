@@ -1,0 +1,10 @@
+{
+  "evm_erc20_deploy": ["simulation", "gas"],
+  "solana_spl_mint": ["pda"],
+  "cosmos_ibc_transfer": ["channel"],
+  "mainnet_guard": ["guardrails", "threshold"],
+  "contract_upgrade": ["simulation"],
+  "validator_slashing": ["kms"],
+  "compliance_screening": ["sanctions", "audit"],
+  "rollup_batch": ["sequencer"]
+}

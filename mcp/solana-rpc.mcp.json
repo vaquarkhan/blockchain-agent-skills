@@ -1,0 +1,24 @@
+{
+  "name": "solana-rpc",
+  "description": "Solana RPC access for account reads, transaction simulation, and SPL token inspection.",
+  "transport": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["mcp/solana-rpc-server/server.py"],
+    "env": {
+      "SOLANA_RPC_URL": "${SOLANA_RPC_URL}",
+      "SOLANA_CLUSTER": "${SOLANA_CLUSTER:-mainnet-beta}"
+    }
+  },
+  "metadata": {
+    "chains": ["solana"],
+    "validation": [
+      "solana cluster-version --url ${SOLANA_RPC_URL}"
+    ],
+    "best_for": [
+      "simulateTransaction",
+      "account and program queries",
+      "SPL token metadata"
+    ]
+  }
+}

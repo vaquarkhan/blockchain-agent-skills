@@ -1,0 +1,7 @@
+﻿gh : accepts 1 arg(s), received 3
+At C:\Users\Administrator\AppData\Local\Temp\ps-script-0abc6fc0-b9ca-41fb-8f34-eae337ef3524.ps1:101 char:1
++ gh api "repos/vaquarkhan/data-engineering-agent-skills/git/trees/main ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (accepts 1 arg(s), received 3:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

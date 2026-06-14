@@ -1,0 +1,32 @@
+name: release-gate-evidence
+version: "0.1.0"
+description: Evidence bundle required before mainnet or production chain release
+
+checks:
+  simulation:
+    required: true
+    artifacts:
+      - simulate_tx_hash_or_trace
+      - decoded_revert_on_failure
+  guardrails:
+    required: true
+    files:
+      - guardrails/transaction-safety.yaml
+      - guardrails/security.yaml
+  confirmation:
+    required: true
+    min_depth: chain_specific
+  human_approval:
+    required_for:
+      - mainnet
+      - value_above_threshold
+      - validator_operations
+  rollback:
+    required: true
+    plan_reference: templates/incident-runbook.md
+
+signoff:
+  reviewer: ""
+  timestamp_utc: ""
+  network: ""
+  notes: ""

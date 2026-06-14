@@ -1,0 +1,24 @@
+name: simulate-evidence
+version: "0.2.0"
+description: Evidence bundle for a successful pre-broadcast simulation
+
+operation:
+  chain: ""
+  tool: eth_call
+  run_id: ""
+
+simulation:
+  passed: false
+  request_hash: ""
+  response_summary: ""
+  revert_reason: ""
+  captured_at_utc: ""
+
+guardrails:
+  transaction_safety_applied: false
+  security_applied: false
+  compliance_applied: false
+
+confidence:
+  score: MEDIUM
+  rpc_freshness_seconds: 0

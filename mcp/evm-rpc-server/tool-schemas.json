@@ -1,0 +1,149 @@
+{
+  "tools": [
+    {
+      "name": "eth_blockNumber",
+      "description": "Returns the latest block number for the configured EVM chain.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "chain": {"type": "string", "enum": ["ethereum", "arbitrum", "base", "polygon"]}
+        }
+      }
+    },
+    {
+      "name": "eth_getBlockByNumber",
+      "description": "Returns block header and optional transaction hashes.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["block"],
+        "properties": {
+          "chain": {"type": "string"},
+          "block": {"type": "string"},
+          "full_transactions": {"type": "boolean"}
+        }
+      }
+    },
+    {
+      "name": "eth_getBalance",
+      "description": "Returns native balance for an address.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["address"],
+        "properties": {
+          "chain": {"type": "string"},
+          "address": {"type": "string"},
+          "block": {"type": "string"}
+        }
+      }
+    },
+    {
+      "name": "eth_call",
+      "description": "Simulate a contract call without broadcasting.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["to", "data"],
+        "properties": {
+          "chain": {"type": "string"},
+          "to": {"type": "string"},
+          "data": {"type": "string"},
+          "from": {"type": "string"},
+          "block": {"type": "string"}
+        }
+      }
+    },
+    {
+      "name": "eth_estimateGas",
+      "description": "Estimate gas for a transaction payload.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["to", "data"],
+        "properties": {
+          "chain": {"type": "string"},
+          "to": {"type": "string"},
+          "data": {"type": "string"},
+          "from": {"type": "string"}
+        }
+      }
+    },
+    {
+      "name": "eth_getLogs",
+      "description": "Query event logs with filter object.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["filter"],
+        "properties": {
+          "chain": {"type": "string"},
+          "filter": {"type": "object"}
+        }
+      }
+    },
+    {
+      "name": "eth_getStorageAt",
+      "description": "Read contract storage slot.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["address", "slot"],
+        "properties": {
+          "chain": {"type": "string"},
+          "address": {"type": "string"},
+          "slot": {"type": "string"},
+          "block": {"type": "string"}
+        }
+      }
+    },
+    {
+      "name": "eth_getTransactionReceipt",
+      "description": "Fetch transaction receipt by hash.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["tx_hash"],
+        "properties": {
+          "chain": {"type": "string"},
+          "tx_hash": {"type": "string"}
+        }
+      }
+    },
+    {
+      "name": "debug_traceCall",
+      "description": "Trace a call execution (requires debug-enabled RPC).",
+      "inputSchema": {
+        "type": "object",
+        "required": ["to", "data"],
+        "properties": {
+          "chain": {"type": "string"},
+          "to": {"type": "string"},
+          "data": {"type": "string"},
+          "from": {"type": "string"},
+          "block": {"type": "string"}
+        }
+      }
+    },
+    {
+      "name": "eth_getProof",
+      "description": "Returns account and storage Merkle proofs.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["address"],
+        "properties": {
+          "chain": {"type": "string"},
+          "address": {"type": "string"},
+          "storage_keys": {"type": "array", "items": {"type": "string"}},
+          "block": {"type": "string"}
+        }
+      }
+    },
+    {
+      "name": "eth_sendRawTransaction",
+      "description": "Broadcast KMS-signed raw transaction (requires simulate-first guardrails).",
+      "inputSchema": {
+        "type": "object",
+        "required": ["raw_transaction"],
+        "properties": {
+          "chain": {"type": "string"},
+          "raw_transaction": {"type": "string"},
+          "network": {"type": "string"}
+        }
+      }
+    }
+  ]
+}

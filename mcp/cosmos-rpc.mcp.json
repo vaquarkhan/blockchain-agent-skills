@@ -1,0 +1,24 @@
+{
+  "name": "cosmos-rpc",
+  "description": "Cosmos SDK RPC access for IBC transfers, account queries, and validator state.",
+  "transport": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["mcp/cosmos-rpc-server/server.py"],
+    "env": {
+      "COSMOS_RPC_URL": "${COSMOS_RPC_URL}",
+      "COSMOS_CHAIN_ID": "${COSMOS_CHAIN_ID:-cosmoshub-4}"
+    }
+  },
+  "metadata": {
+    "chains": ["cosmos", "osmosis", "celestia", "injective"],
+    "validation": [
+      "curl -s ${COSMOS_RPC_URL}/status"
+    ],
+    "best_for": [
+      "IBC channel inspection",
+      "account and balance queries",
+      "tx simulation before broadcast"
+    ]
+  }
+}

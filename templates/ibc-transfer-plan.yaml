@@ -1,0 +1,26 @@
+name: ibc-transfer-plan
+version: "0.2.0"
+description: Cosmos IBC transfer planning template
+
+transfer:
+  source_chain: cosmoshub-4
+  destination_chain: osmosis-1
+  channel_id: ""
+  port: transfer
+  amount: ""
+  denom: uatom
+
+checks:
+  channel_open: false
+  timeout_height_set: false
+  fee_denom_sufficient: false
+  memo_for_audit: ""
+  simulate_passed: false
+
+confirmation:
+  source_depth: 0
+  destination_depth: 0
+
+signoff:
+  approver: ""
+  date_utc: ""

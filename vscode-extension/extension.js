@@ -10,6 +10,7 @@ const CORE_FILES = [
   "registry/assets.json",
   "registry/chains.json",
   "requirements.txt",
+  "requirements-proof.txt",
   "docs/getting-started.md",
   "docs/codex-setup.md",
   "scripts/install.sh",
@@ -29,6 +30,9 @@ const CORE_FILES = [
   "guardrails/denied-topics.yaml",
   "templates/skill-definition.yaml",
   "templates/tx-plan.yaml",
+  "templates/incident-runbook.md",
+  "templates/release-gate-evidence.yaml",
+  "templates/mainnet-readiness.yaml",
   "bootstrap.sh",
   "bootstrap.ps1"
 ];
@@ -49,7 +53,33 @@ const AGENT_ADAPTERS = {
     "CLAUDE.md"
   ],
   Copilot: [".github/copilot-instructions.md", "AGENTS.md"],
+  Gemini: [
+    ".gemini/commands/spec.md",
+    ".gemini/commands/plan.md",
+    ".gemini/commands/build.md",
+    ".gemini/commands/test.md",
+    ".gemini/commands/validate.md",
+    ".gemini/commands/backfill.md",
+    ".gemini/commands/review.md",
+    ".gemini/commands/ship.md"
+  ],
+  Kiro: [
+    ".kiro/steering/product.md",
+    ".kiro/steering/tech.md",
+    ".kiro/steering/structure.md",
+    "docs/kiro-setup.md",
+    "AGENTS.md",
+    "CLAUDE.md"
+  ],
   Codex: ["AGENTS.md", "CLAUDE.md", "skills-index.md", "docs/getting-started.md", "docs/codex-setup.md"],
+  OpenCode: [
+    "AGENTS.md",
+    "CLAUDE.md",
+    ".opencode/README.md",
+    ".opencode/skills",
+    "docs/opencode-setup.md",
+    "docs/getting-started.md"
+  ],
   Windsurf: [".windsurfrules.example", "docs/windsurf-setup.md", "docs/getting-started.md"]
 };
 
@@ -58,7 +88,7 @@ const STARTER_PACKS = {
     files: [
       "starter-packs/evm-core-starter.yaml",
       "presets/evm-core/PRESET.md",
-      "mcp/evm-rpc-server/config.yaml",
+      "mcp/evm-rpc.mcp.json",
       "guardrails/transaction-safety.yaml",
       "AGENTS.md",
       "skills-index.md"
@@ -68,7 +98,7 @@ const STARTER_PACKS = {
     files: [
       "starter-packs/solana-programs-starter.yaml",
       "presets/solana-mainnet/PRESET.md",
-      "mcp/solana-rpc-server/config.yaml",
+      "mcp/solana-rpc.mcp.json",
       "AGENTS.md",
       "skills-index.md"
     ]
@@ -77,7 +107,7 @@ const STARTER_PACKS = {
     files: [
       "starter-packs/near-multichain-starter.yaml",
       "presets/near-mainnet/PRESET.md",
-      "mcp/near-rpc-server/config.yaml",
+      "mcp/near-rpc.mcp.json",
       "AGENTS.md",
       "skills-index.md"
     ]
@@ -86,7 +116,7 @@ const STARTER_PACKS = {
     files: [
       "starter-packs/cosmos-ibc-starter.yaml",
       "presets/cosmos-ibc/PRESET.md",
-      "mcp/cosmos-rpc-server/config.yaml",
+      "mcp/cosmos-rpc.mcp.json",
       "AGENTS.md",
       "skills-index.md"
     ]
@@ -104,20 +134,13 @@ const STARTER_PACKS = {
 };
 
 const MCP_TEMPLATES = {
-  EVM: ["mcp/evm-rpc-server/config.yaml", "mcp/evm-rpc-server/README.md"],
-  Solana: ["mcp/solana-rpc-server/config.yaml", "mcp/solana-rpc-server/tool-schemas.json"],
-  NEAR: ["mcp/near-rpc-server/config.yaml", "mcp/near-rpc-server/tool-schemas.json"],
-  Cosmos: ["mcp/cosmos-rpc-server/config.yaml", "mcp/cosmos-rpc-server/tool-schemas.json"],
-  All: [
-    "mcp/README.md",
-    "mcp/evm-rpc-server/config.yaml",
-    "mcp/solana-rpc-server/config.yaml",
-    "mcp/near-rpc-server/config.yaml",
-    "mcp/cosmos-rpc-server/config.yaml"
-  ]
+  EVM: ["mcp/evm-rpc.mcp.json"],
+  Solana: ["mcp/solana-rpc.mcp.json"],
+  NEAR: ["mcp/near-rpc.mcp.json"],
+  Cosmos: ["mcp/cosmos-rpc.mcp.json"]
 };
 
-const EXAMPLES = {
+const RUNNABLE_EXAMPLES = {
   "EVM ERC-20 Deploy": [
     "examples/evm-erc20-deploy/README.md",
     "examples/evm-erc20-deploy/spec.md",
@@ -125,7 +148,8 @@ const EXAMPLES = {
     "examples/evm-erc20-deploy/tasks.md",
     "examples/evm-erc20-deploy/Makefile",
     "examples/evm-erc20-deploy/contracts/Token.sol",
-    "scripts/validate-skills.py"
+    "scripts/validate-skills.py",
+    "requirements-proof.txt"
   ],
   "Chain Provider Validation": [
     "examples/chain-provider-validation/README.md",
@@ -135,19 +159,8 @@ const EXAMPLES = {
     "examples/chain-provider-validation/Makefile",
     "lib/chain_providers",
     "tests/test_chain_providers.py",
-    "scripts/validate-skills.py"
-  ],
-  "Cosmos IBC Transfer": [
-    "examples/cosmos-ibc-transfer/README.md",
-    "examples/cosmos-ibc-transfer/spec.md",
-    "examples/cosmos-ibc-transfer/plan.md",
-    "examples/cosmos-ibc-transfer/tasks.md"
-  ],
-  "Solana SPL Token": [
-    "examples/solana-spl-token/README.md",
-    "examples/solana-spl-token/spec.md",
-    "examples/solana-spl-token/plan.md",
-    "examples/solana-spl-token/tasks.md"
+    "scripts/validate-skills.py",
+    "requirements-proof.txt"
   ]
 };
 
@@ -160,7 +173,7 @@ function activate(context) {
         ...CORE_FILES,
         ...Object.values(AGENT_ADAPTERS).flat(),
         ...Object.values(STARTER_PACKS).flatMap((p) => p.files),
-        ...MCP_TEMPLATES.All,
+        ...Object.values(MCP_TEMPLATES).flat(),
         "mcp/README.md"
       ]);
       await installFiles(context, root, files, "full toolkit");
@@ -198,16 +211,20 @@ function activate(context) {
         placeHolder: "Choose MCP templates"
       });
       if (!picked) return;
-      await installFiles(context, root, MCP_TEMPLATES[picked], `${picked} MCP templates`);
+      const files =
+        picked === "All"
+          ? dedupe([...Object.values(MCP_TEMPLATES).flat(), "mcp/README.md"])
+          : MCP_TEMPLATES[picked];
+      await installFiles(context, root, files, `${picked} MCP templates`);
     }),
     vscode.commands.registerCommand("blockchainSkills.scaffoldExample", async () => {
       const root = getWorkspaceRoot();
       if (!root) return;
-      const picked = await vscode.window.showQuickPick(Object.keys(EXAMPLES), {
-        placeHolder: "Choose an example to scaffold"
+      const picked = await vscode.window.showQuickPick(Object.keys(RUNNABLE_EXAMPLES), {
+        placeHolder: "Choose a runnable example to scaffold"
       });
       if (!picked) return;
-      await installFiles(context, root, EXAMPLES[picked], `${picked} example`);
+      await installFiles(context, root, RUNNABLE_EXAMPLES[picked], `${picked} example`);
     })
   );
 }

@@ -1,0 +1,79 @@
+name: Release Artifacts
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-release-artifacts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Validate repository structure
+        run: |
+          python scripts/validate-skills.py
+          python scripts/validate-assets.py
+          python scripts/check-links.py
+
+      - name: Build release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p ../dist
+          if [[ "${GITHUB_REF_TYPE:-}" == "tag" ]]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+          else
+            VERSION="ci-${GITHUB_SHA::7}"
+          fi
+          npx @vscode/vsce package --out "../dist/blockchain-agent-skills-${VERSION}.vsix"
+          cd ../jetbrains-plugin
+          chmod +x gradlew
+          ./gradlew buildPlugin
+          cp build/distributions/*.zip ../dist/
+          cd ..
+          JETBRAINS_ZIP="$(ls dist/*.zip | head -n 1)"
+          python scripts/test-plugin-installation.py --vsix "dist/blockchain-agent-skills-${VERSION}.vsix" --jetbrains-zip "$JETBRAINS_ZIP"
+          cd dist
+          sha256sum * > SHA256SUMS.txt
+        working-directory: vscode-extension
+
+      - name: Upload release build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts-ci
+          path: dist/*
+
+      - name: Publish GitHub release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
+          fail_on_unmatched_files: true

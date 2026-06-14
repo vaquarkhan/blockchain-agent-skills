@@ -1,0 +1,12 @@
+{
+  "name": "blockchain-adoption",
+  "description": "Adoption bundle for guardrails, presets, starter packs, and simulate-first lifecycle workflows.",
+  "includes": [
+    "skills/using-blockchain-agent-skills",
+    "guardrails/transaction-safety.yaml",
+    "guardrails/security.yaml",
+    "guardrails/compliance.yaml",
+    "presets/evm-core/PRESET.md",
+    "presets/solana-mainnet/PRESET.md"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "tools": [
+    {
+      "name": "sui_getObject",
+      "description": "Read Sui object by ID.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["object_id"],
+        "properties": {"object_id": {"type": "string"}}
+      }
+    },
+    {
+      "name": "aptos_view",
+      "description": "Call Aptos view function.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["function", "type_arguments", "arguments"],
+        "properties": {
+          "function": {"type": "string"},
+          "type_arguments": {"type": "array"},
+          "arguments": {"type": "array"}
+        }
+      }
+    }
+  ]
+}

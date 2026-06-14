@@ -1,0 +1,4 @@
+name: move-rpc-server
+version: "0.3.0"
+chains: [sui, aptos]
+transport: stdio

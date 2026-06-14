@@ -12,6 +12,15 @@ guardrails:
   - guardrails/compliance.yaml
   - guardrails/denied-topics.yaml
 
+preset: presets/evm-core/PRESET.md
+
+templates:
+  - templates/mainnet-readiness.yaml
+  - templates/release-gate-evidence.yaml
+  - templates/incident-runbook.md
+
+example: examples/chain-provider-validation
+
 requirements:
   - ofac_screening: mandatory
   - audit_retention_years: 7

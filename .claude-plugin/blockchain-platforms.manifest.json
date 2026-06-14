@@ -1,0 +1,9 @@
+{
+  "name": "blockchain-platforms",
+  "description": "Platform skills for smart contracts, token standards, and event indexing across Solana, NEAR, and Cosmos.",
+  "includes": [
+    "skills/smart-contract-factory",
+    "skills/token-standards-engine",
+    "skills/event-indexing"
+  ]
+}

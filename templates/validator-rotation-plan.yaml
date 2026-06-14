@@ -1,0 +1,28 @@
+name: validator-rotation-plan
+version: "0.2.0"
+description: Validator key rotation or slashing recovery plan
+
+validator:
+  chain: ""
+  operator: ""
+  key_type: kms
+
+steps:
+  - id: containment
+    complete: false
+    notes: ""
+  - id: new_key_provisioned
+    complete: false
+    notes: ""
+  - id: double_sign_check
+    complete: false
+    notes: ""
+  - id: rotation_broadcast
+    complete: false
+    notes: ""
+  - id: monitoring_restored
+    complete: false
+    notes: ""
+
+human_approval_required: true
+incident_runbook: templates/incident-runbook.md

@@ -1,0 +1,24 @@
+{
+  "name": "near-rpc",
+  "description": "NEAR RPC access for view calls, account state, and Aurora bridge context.",
+  "transport": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["mcp/near-rpc-server/server.py"],
+    "env": {
+      "NEAR_RPC_URL": "${NEAR_RPC_URL}",
+      "NEAR_NETWORK": "${NEAR_NETWORK:-mainnet}"
+    }
+  },
+  "metadata": {
+    "chains": ["near", "aurora"],
+    "validation": [
+      "curl -s ${NEAR_RPC_URL} -X POST -H 'Content-Type: application/json' -d '{\"jsonrpc\":\"2.0\",\"method\":\"status\",\"params\":[],\"id\":1}'"
+    ],
+    "best_for": [
+      "view function calls",
+      "account and access key inspection",
+      "NEAR-Aurora routing"
+    ]
+  }
+}

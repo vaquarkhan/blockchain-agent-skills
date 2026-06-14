@@ -1,0 +1,10 @@
+{
+  "name": "blockchain-core",
+  "description": "Core blockchain workflow skills for chain abstraction, transaction lifecycle, and block state queries.",
+  "includes": [
+    "skills/using-blockchain-agent-skills",
+    "skills/chain-abstraction",
+    "skills/transaction-lifecycle",
+    "skills/block-state-queries"
+  ]
+}

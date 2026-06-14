@@ -1,0 +1,17 @@
+{
+  "tools": [
+    {
+      "name": "chain_getBlock",
+      "description": "Returns Substrate block hash or header.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {"block": {"type": "string"}}
+      }
+    },
+    {
+      "name": "system_health",
+      "description": "Returns node health status.",
+      "inputSchema": {"type": "object", "properties": {}}
+    }
+  ]
+}

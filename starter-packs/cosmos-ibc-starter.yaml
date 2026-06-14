@@ -13,6 +13,12 @@ mcp_servers:
 
 preset: presets/cosmos-ibc/PRESET.md
 
+templates:
+  - templates/tx-plan.yaml
+  - templates/release-gate-evidence.yaml
+
+example: examples/cosmos-ibc-transfer
+
 chains:
   - cosmos
   - osmosis

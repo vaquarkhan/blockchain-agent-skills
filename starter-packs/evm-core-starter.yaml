@@ -17,6 +17,13 @@ guardrails:
 
 preset: presets/evm-core/PRESET.md
 
+templates:
+  - templates/tx-plan.yaml
+  - templates/mainnet-readiness.yaml
+  - templates/release-gate-evidence.yaml
+
+example: examples/evm-erc20-deploy
+
 chains:
   - ethereum
   - arbitrum

@@ -2,33 +2,24 @@
 
 MCP server for EVM-compatible chains. Phase 1 implementation covers Ethereum, Arbitrum, Base, and Polygon.
 
-## Tools
+## Implemented server (`server.py`)
 
-| Tool | RPC method | Description |
-| --- | --- | --- |
-| `eth_call` | eth_call | Simulate contract call |
-| `eth_estimateGas` | eth_estimateGas | Estimate gas for transaction |
-| `eth_sendRawTransaction` | eth_sendRawTransaction | Broadcast signed tx |
-| `eth_getLogs` | eth_getLogs | Query event logs |
-| `eth_getStorageAt` | eth_getStorageAt | Read storage slot |
-| `eth_getTransactionReceipt` | eth_getTransactionReceipt | Get tx receipt |
-| `debug_traceCall` | debug_traceCall | Trace call execution |
-| `eth_getProof` | eth_getProof | Merkle-Patricia storage proof |
-| `eth_getBlockByNumber` | eth_getBlockByNumber | Get block by number |
-| `eth_getBalance` | eth_getBalance | Get account balance |
+Read-only MCP stdio tools (v0.2.0):
 
-## Setup
+| Tool | RPC method |
+| --- | --- |
+| `eth_blockNumber` | eth_blockNumber |
+| `eth_getBalance` | eth_getBalance |
+| `eth_call` | eth_call |
+| `eth_estimateGas` | eth_estimateGas |
 
 ```bash
-pip install -r requirements.txt
 export ALCHEMY_ETH_URL=https://eth-mainnet.g.alchemy.com/v2/KEY
-export MCP_API_KEY=dev-local-key
 python server.py
+python ../../scripts/validate-mcp-servers.py
 ```
 
-## Health check
-
-`GET /health` — returns RPC connectivity status per configured chain.
+Write tools (`eth_sendRawTransaction`, etc.) remain roadmap — use KMS signing outside MCP.
 
 ## Deployment
 

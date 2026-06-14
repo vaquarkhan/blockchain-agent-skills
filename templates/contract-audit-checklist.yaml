@@ -1,0 +1,30 @@
+name: contract-audit-checklist
+version: "0.2.0"
+description: Pre-deploy smart contract audit checklist
+
+contract:
+  name: ""
+  language: solidity
+  chain: ethereum
+  deployer: ""
+
+checks:
+  access_control:
+    owner_documented: false
+    role_separation: false
+    timelock_on_upgrade: false
+  economics:
+    mint_burn_limits: false
+    fee_recipient_documented: false
+  security:
+    reentrancy_reviewed: false
+    oracle_dependency_reviewed: false
+    external_call_surface_mapped: false
+  operations:
+    simulation_passed: false
+    explorer_verification_planned: false
+    incident_runbook_linked: false
+
+signoff:
+  reviewer: ""
+  date_utc: ""

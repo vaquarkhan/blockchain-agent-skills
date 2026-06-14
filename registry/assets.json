@@ -1,73 +1,330 @@
 {
-  "version": "0.2.0",
-  "skills": [
-    {"name": "using-blockchain-agent-skills", "path": "skills/using-blockchain-agent-skills", "phase": "meta", "category": "orchestration"},
-    {"name": "chain-abstraction", "path": "skills/chain-abstraction", "phase": 1, "category": "infrastructure", "chains": ["ethereum", "arbitrum", "base", "polygon", "solana", "near", "cosmos", "osmosis", "celestia", "injective"]},
-    {"name": "transaction-lifecycle", "path": "skills/transaction-lifecycle", "phase": 1, "category": "infrastructure", "chains": ["ethereum", "arbitrum", "base", "polygon"]},
-    {"name": "block-state-queries", "path": "skills/block-state-queries", "phase": 1, "category": "infrastructure", "chains": ["ethereum", "arbitrum", "base", "polygon"]},
-    {"name": "smart-contract-factory", "path": "skills/smart-contract-factory", "phase": 2, "category": "contracts", "chains": ["solana", "near", "cosmos"], "status": "implemented"},
-    {"name": "event-indexing", "path": "skills/event-indexing", "phase": 2, "category": "data", "chains": ["solana", "near", "cosmos"], "status": "implemented"},
-    {"name": "token-standards-engine", "path": "skills/token-standards-engine", "phase": 2, "category": "tokens", "chains": ["solana", "near", "cosmos"], "status": "implemented"},
-    {"name": "rollup-operations", "path": "skills/rollup-operations", "phase": 3, "category": "rollups"},
-    {"name": "data-availability", "path": "skills/data-availability", "phase": 3, "category": "da"},
-    {"name": "privacy-zk", "path": "skills/privacy-zk", "phase": 3, "category": "privacy"},
-    {"name": "storage-state-proofs", "path": "skills/storage-state-proofs", "phase": 3, "category": "proofs"},
-    {"name": "consensus-validator-ops", "path": "skills/consensus-validator-ops", "phase": 4, "category": "validators"},
-    {"name": "network-monitoring", "path": "skills/network-monitoring", "phase": 4, "category": "monitoring"}
-  ],
-  "mcp_servers": [
-    {"name": "evm-rpc-server", "path": "mcp/evm-rpc-server", "chains": ["ethereum", "polygon", "arbitrum", "base", "optimism", "avalanche", "bnb", "zksync", "starknet"], "status": "scaffold"},
-    {"name": "solana-rpc-server", "path": "mcp/solana-rpc-server", "chains": ["solana"], "status": "scaffold"},
-    {"name": "near-rpc-server", "path": "mcp/near-rpc-server", "chains": ["near", "aurora"], "status": "scaffold"},
-    {"name": "cosmos-rpc-server", "path": "mcp/cosmos-rpc-server", "chains": ["cosmos", "osmosis", "celestia", "injective"], "status": "scaffold"},
-    {"name": "move-rpc-server", "path": "mcp/move-rpc-server", "chains": ["sui", "aptos"], "status": "planned"},
-    {"name": "bitcoin-rpc-server", "path": "mcp/bitcoin-rpc-server", "chains": ["bitcoin", "lightning", "stacks"], "status": "planned"},
-    {"name": "ton-rpc-server", "path": "mcp/ton-rpc-server", "chains": ["ton"], "status": "planned"},
-    {"name": "substrate-rpc-server", "path": "mcp/substrate-rpc-server", "chains": ["polkadot", "kusama", "moonbeam"], "status": "planned"}
-  ],
-  "chain_providers": {
-    "path": "lib/chain_providers",
-    "registry": "registry/chains.json"
-  },
-  "agents": [
-    {"name": "blockchain-supervisor", "path": "agents/blockchain-supervisor.md"},
-    {"name": "chain-interaction-agent", "path": "agents/chain-interaction-agent.md"},
-    {"name": "contract-agent", "path": "agents/contract-agent.md"},
-    {"name": "validator-da-agent", "path": "agents/validator-da-agent.md"},
-    {"name": "rollup-zk-agent", "path": "agents/rollup-zk-agent.md"}
-  ],
-  "guardrails": [
-    "guardrails/transaction-safety.yaml",
-    "guardrails/security.yaml",
-    "guardrails/compliance.yaml",
-    "guardrails/denied-topics.yaml"
-  ],
-  "presets": [
-    {"name": "evm-core", "path": "presets/evm-core/PRESET.md"},
-    {"name": "solana-mainnet", "path": "presets/solana-mainnet/PRESET.md"},
-    {"name": "near-mainnet", "path": "presets/near-mainnet/PRESET.md"},
-    {"name": "cosmos-ibc", "path": "presets/cosmos-ibc/PRESET.md"}
+  "templates": [
+    {"id": "skill-definition", "path": "templates/skill-definition.yaml", "category": "skill"},
+    {"id": "tx-plan", "path": "templates/tx-plan.yaml", "category": "operations"},
+    {"id": "incident-runbook", "path": "templates/incident-runbook.md", "category": "operations"},
+    {"id": "release-gate-evidence", "path": "templates/release-gate-evidence.yaml", "category": "operations"},
+    {"id": "mainnet-readiness", "path": "templates/mainnet-readiness.yaml", "category": "operations"},
+    {"id": "contract-audit-checklist", "path": "templates/contract-audit-checklist.yaml", "category": "contracts"},
+    {"id": "bridge-transfer-plan", "path": "templates/bridge-transfer-plan.yaml", "category": "operations"},
+    {"id": "validator-rotation-plan", "path": "templates/validator-rotation-plan.yaml", "category": "operations"},
+    {"id": "compliance-screening", "path": "templates/compliance-screening.yaml", "category": "compliance"},
+    {"id": "simulate-evidence", "path": "templates/simulate-evidence.yaml", "category": "operations"},
+    {"id": "ibc-transfer-plan", "path": "templates/ibc-transfer-plan.yaml", "category": "operations"}
   ],
   "starter_packs": [
-    {"name": "evm-core-starter", "path": "starter-packs/evm-core-starter.yaml"},
-    {"name": "solana-programs-starter", "path": "starter-packs/solana-programs-starter.yaml"},
-    {"name": "near-multichain-starter", "path": "starter-packs/near-multichain-starter.yaml"},
-    {"name": "cosmos-ibc-starter", "path": "starter-packs/cosmos-ibc-starter.yaml"},
-    {"name": "compliance-guardrails-starter", "path": "starter-packs/compliance-guardrails-starter.yaml"}
+    {
+      "id": "evm-core",
+      "label": "EVM Core",
+      "path": "starter-packs/evm-core-starter.yaml",
+      "install_files": [
+        "starter-packs/evm-core-starter.yaml",
+        "presets/evm-core/PRESET.md",
+        "mcp/evm-rpc.mcp.json",
+        "guardrails/transaction-safety.yaml",
+        "AGENTS.md",
+        "skills-index.md"
+      ]
+    },
+    {
+      "id": "solana-programs",
+      "label": "Solana Programs",
+      "path": "starter-packs/solana-programs-starter.yaml",
+      "install_files": [
+        "starter-packs/solana-programs-starter.yaml",
+        "presets/solana-mainnet/PRESET.md",
+        "mcp/solana-rpc.mcp.json",
+        "AGENTS.md",
+        "skills-index.md"
+      ]
+    },
+    {
+      "id": "near-multichain",
+      "label": "NEAR Multi-chain",
+      "path": "starter-packs/near-multichain-starter.yaml",
+      "install_files": [
+        "starter-packs/near-multichain-starter.yaml",
+        "presets/near-mainnet/PRESET.md",
+        "mcp/near-rpc.mcp.json",
+        "AGENTS.md",
+        "skills-index.md"
+      ]
+    },
+    {
+      "id": "cosmos-ibc",
+      "label": "Cosmos IBC",
+      "path": "starter-packs/cosmos-ibc-starter.yaml",
+      "install_files": [
+        "starter-packs/cosmos-ibc-starter.yaml",
+        "presets/cosmos-ibc/PRESET.md",
+        "mcp/cosmos-rpc.mcp.json",
+        "AGENTS.md",
+        "skills-index.md"
+      ]
+    },
+    {
+      "id": "compliance-guardrails",
+      "label": "Compliance Guardrails",
+      "path": "starter-packs/compliance-guardrails-starter.yaml",
+      "install_files": [
+        "starter-packs/compliance-guardrails-starter.yaml",
+        "guardrails/compliance.yaml",
+        "guardrails/security.yaml",
+        "guardrails/denied-topics.yaml",
+        "AGENTS.md",
+        "skills-index.md"
+      ]
+    }
   ],
   "examples": [
-    {"name": "chain-provider-validation", "path": "examples/chain-provider-validation", "runnable": true},
-    {"name": "evm-erc20-deploy", "path": "examples/evm-erc20-deploy", "runnable": true},
-    {"name": "solana-spl-token", "path": "examples/solana-spl-token", "runnable": false},
-    {"name": "cosmos-ibc-transfer", "path": "examples/cosmos-ibc-transfer", "runnable": false}
+    {"id": "evm-erc20-deploy", "readme": "examples/evm-erc20-deploy/README.md", "runnable": true},
+    {"id": "chain-provider-validation", "readme": "examples/chain-provider-validation/README.md", "runnable": true},
+    {"id": "solana-spl-token", "readme": "examples/solana-spl-token/README.md", "runnable": true},
+    {"id": "cosmos-ibc-transfer", "readme": "examples/cosmos-ibc-transfer/README.md", "runnable": false}
   ],
-  "plugins": {
-    "vscode": "vscode-extension/package.json",
-    "jetbrains": "jetbrains-plugin/gradle.properties"
+  "mcp_templates": [
+    {"label": "EVM", "path": "mcp/evm-rpc.mcp.json"},
+    {"label": "Solana", "path": "mcp/solana-rpc.mcp.json"},
+    {"label": "NEAR", "path": "mcp/near-rpc.mcp.json"},
+    {"label": "Cosmos", "path": "mcp/cosmos-rpc.mcp.json"}
+  ],
+  "install_surfaces": {
+    "core_files": [
+      "AGENTS.md",
+      "CLAUDE.md",
+      "skills-index.md",
+      "registry/assets.json",
+      "registry/chains.json",
+      "requirements.txt",
+      "requirements-proof.txt",
+      "docs/getting-started.md",
+      "docs/codex-setup.md",
+      "scripts/install.sh",
+      "scripts/install.ps1",
+      "scripts/install_toolkit.py",
+      "scripts/validate-skills.py",
+      "scripts/hook_runner.py",
+      "hooks/README.md",
+      "hooks/hooks.json",
+      "hooks/session-start.sh",
+      "hooks/session-start.ps1",
+      "hooks/tx-simulate-pre.sh",
+      "hooks/mainnet-guard.sh",
+      "guardrails/transaction-safety.yaml",
+      "guardrails/security.yaml",
+      "guardrails/compliance.yaml",
+      "guardrails/denied-topics.yaml",
+      "templates/skill-definition.yaml",
+      "templates/tx-plan.yaml",
+      "templates/incident-runbook.md",
+      "templates/release-gate-evidence.yaml",
+      "templates/mainnet-readiness.yaml",
+      "bootstrap.sh",
+      "bootstrap.ps1"
+    ],
+    "generic_install_files": [
+      "AGENTS.md",
+      "CLAUDE.md",
+      "skills-index.md",
+      "registry/assets.json",
+      "registry/chains.json",
+      "docs/getting-started.md",
+      "requirements.txt",
+      "requirements-proof.txt",
+      "scripts/install.sh",
+      "scripts/install.ps1",
+      "scripts/install_toolkit.py",
+      "scripts/validate-skills.py",
+      "scripts/hook_runner.py",
+      "hooks/README.md",
+      "hooks/session-start.sh",
+      "hooks/session-start.ps1",
+      "hooks/tx-simulate-pre.sh",
+      "hooks/mainnet-guard.sh",
+      "guardrails/transaction-safety.yaml",
+      "guardrails/security.yaml",
+      "guardrails/compliance.yaml",
+      "guardrails/denied-topics.yaml",
+      "templates/skill-definition.yaml",
+      "templates/tx-plan.yaml",
+      "templates/incident-runbook.md",
+      "templates/release-gate-evidence.yaml",
+      "templates/mainnet-readiness.yaml"
+    ],
+    "agent_adapters": [
+      {
+        "label": "Cursor",
+        "files": [
+          ".cursor/rules/00-blockchain-agent-core.mdc",
+          ".cursor/rules/10-simulate-first.mdc",
+          ".cursor/rules/20-guardrails.mdc",
+          ".cursor/rules/30-chain-routing.mdc"
+        ]
+      },
+      {
+        "label": "Claude",
+        "files": [
+          ".claude/commands/plan.md",
+          ".claude/commands/simulate.md",
+          ".claude/commands/broadcast.md",
+          ".claude/commands/confirm-depth.md",
+          "AGENTS.md",
+          "CLAUDE.md"
+        ]
+      },
+      {
+        "label": "Copilot",
+        "files": [".github/copilot-instructions.md", "AGENTS.md"]
+      },
+      {
+        "label": "Gemini",
+        "files": [
+          ".gemini/commands/spec.md",
+          ".gemini/commands/plan.md",
+          ".gemini/commands/build.md",
+          ".gemini/commands/test.md",
+          ".gemini/commands/validate.md",
+          ".gemini/commands/backfill.md",
+          ".gemini/commands/review.md",
+          ".gemini/commands/ship.md"
+        ]
+      },
+      {
+        "label": "Kiro",
+        "files": [
+          ".kiro/steering/product.md",
+          ".kiro/steering/tech.md",
+          ".kiro/steering/structure.md",
+          "docs/kiro-setup.md",
+          "AGENTS.md",
+          "CLAUDE.md"
+        ]
+      },
+      {
+        "label": "Codex",
+        "files": [
+          "AGENTS.md",
+          "CLAUDE.md",
+          "skills-index.md",
+          "docs/getting-started.md",
+          "docs/codex-setup.md"
+        ]
+      },
+      {
+        "label": "OpenCode",
+        "files": [
+          "AGENTS.md",
+          "CLAUDE.md",
+          ".opencode/README.md",
+          ".opencode/skills",
+          "docs/opencode-setup.md",
+          "docs/getting-started.md"
+        ]
+      },
+      {
+        "label": "Windsurf",
+        "files": [
+          ".windsurfrules.example",
+          "docs/windsurf-setup.md",
+          "docs/getting-started.md"
+        ]
+      }
+    ],
+    "runnable_examples": [
+      {
+        "label": "EVM ERC-20 Deploy",
+        "files": [
+          "examples/evm-erc20-deploy/README.md",
+          "examples/evm-erc20-deploy/spec.md",
+          "examples/evm-erc20-deploy/plan.md",
+          "examples/evm-erc20-deploy/tasks.md",
+          "examples/evm-erc20-deploy/Makefile",
+          "examples/evm-erc20-deploy/contracts/Token.sol",
+          "scripts/validate-skills.py",
+          "requirements-proof.txt"
+        ]
+      },
+      {
+        "label": "Chain Provider Validation",
+        "files": [
+          "examples/chain-provider-validation/README.md",
+          "examples/chain-provider-validation/spec.md",
+          "examples/chain-provider-validation/plan.md",
+          "examples/chain-provider-validation/tasks.md",
+          "examples/chain-provider-validation/Makefile",
+          "lib/chain_providers",
+          "tests/test_chain_providers.py",
+          "scripts/validate-skills.py",
+          "requirements-proof.txt"
+        ]
+      }
+    ]
   },
-  "installers": {
-    "script": "scripts/install_toolkit.py",
-    "bootstrap_sh": "bootstrap.sh",
-    "bootstrap_ps1": "bootstrap.ps1"
+  "plugin_packages": {
+    "vscode_extension": {
+      "package_dir": "vscode-extension",
+      "release_download": "https://github.com/vaquarkhan/blockchain-agent-skills/releases/latest",
+      "release_artifact_pattern": "blockchain-agent-skills-*.vsix",
+      "distribution_channels": ["github-releases", "vscode-marketplace", "open-vsx"],
+      "workflows": [
+        ".github/workflows/validate-and-package.yml",
+        ".github/workflows/test-plugin-installation.yml",
+        ".github/workflows/release-artifacts.yml",
+        ".github/workflows/publish-plugins.yml"
+      ]
+    },
+    "jetbrains_plugin": {
+      "package_dir": "jetbrains-plugin",
+      "release_download": "https://github.com/vaquarkhan/blockchain-agent-skills/releases/latest",
+      "release_artifact_pattern": "blockchain-agent-skills-*.zip",
+      "distribution_channels": ["github-releases", "jetbrains-marketplace"],
+      "workflows": [
+        ".github/workflows/validate-and-package.yml",
+        ".github/workflows/test-plugin-installation.yml",
+        ".github/workflows/release-artifacts.yml",
+        ".github/workflows/publish-plugins.yml"
+      ]
+    }
+  },
+  "packaging_manifests": [
+    ".claude-plugin/blockchain-core.manifest.json",
+    ".claude-plugin/blockchain-platforms.manifest.json",
+    ".claude-plugin/blockchain-adoption.manifest.json"
+  ],
+  "catalog": {
+    "version": "0.2.0",
+    "skills": [
+      {"name": "using-blockchain-agent-skills", "path": "skills/using-blockchain-agent-skills", "phase": "meta", "category": "orchestration"},
+      {"name": "chain-abstraction", "path": "skills/chain-abstraction", "phase": 1, "category": "infrastructure"},
+      {"name": "transaction-lifecycle", "path": "skills/transaction-lifecycle", "phase": 1, "category": "infrastructure"},
+      {"name": "block-state-queries", "path": "skills/block-state-queries", "phase": 1, "category": "infrastructure"},
+      {"name": "smart-contract-factory", "path": "skills/smart-contract-factory", "phase": 2, "category": "contracts", "status": "implemented"},
+      {"name": "event-indexing", "path": "skills/event-indexing", "phase": 2, "category": "data", "status": "implemented"},
+      {"name": "token-standards-engine", "path": "skills/token-standards-engine", "phase": 2, "category": "tokens", "status": "implemented"},
+      {"name": "rollup-operations", "path": "skills/rollup-operations", "phase": 3, "category": "rollups"},
+      {"name": "data-availability", "path": "skills/data-availability", "phase": 3, "category": "da"},
+      {"name": "privacy-zk", "path": "skills/privacy-zk", "phase": 3, "category": "privacy"},
+      {"name": "storage-state-proofs", "path": "skills/storage-state-proofs", "phase": 3, "category": "proofs"},
+      {"name": "consensus-validator-ops", "path": "skills/consensus-validator-ops", "phase": 4, "category": "validators"},
+      {"name": "network-monitoring", "path": "skills/network-monitoring", "phase": 4, "category": "monitoring"}
+    ],
+    "mcp_servers": [
+      {"name": "evm-rpc-server", "path": "mcp/evm-rpc-server", "status": "implemented", "tools": 11},
+      {"name": "solana-rpc-server", "path": "mcp/solana-rpc-server", "status": "implemented", "tools": 4},
+      {"name": "near-rpc-server", "path": "mcp/near-rpc-server", "status": "implemented", "tools": 4},
+      {"name": "cosmos-rpc-server", "path": "mcp/cosmos-rpc-server", "status": "implemented", "tools": 4},
+      {"name": "move-rpc-server", "path": "mcp/move-rpc-server", "status": "implemented", "tools": 2},
+      {"name": "bitcoin-rpc-server", "path": "mcp/bitcoin-rpc-server", "status": "implemented", "tools": 2},
+      {"name": "ton-rpc-server", "path": "mcp/ton-rpc-server", "status": "implemented", "tools": 1},
+      {"name": "substrate-rpc-server", "path": "mcp/substrate-rpc-server", "status": "implemented", "tools": 2}
+    ],
+    "chain_providers": {"path": "lib/chain_providers", "registry": "registry/chains.json"},
+    "agents": [
+      {"name": "blockchain-supervisor", "path": "agents/blockchain-supervisor.md"},
+      {"name": "chain-interaction-agent", "path": "agents/chain-interaction-agent.md"},
+      {"name": "contract-agent", "path": "agents/contract-agent.md"},
+      {"name": "validator-da-agent", "path": "agents/validator-da-agent.md"},
+      {"name": "rollup-zk-agent", "path": "agents/rollup-zk-agent.md"}
+    ]
   }
 }
