@@ -1,0 +1,49 @@
+version: "1.0"
+category: security
+description: Security guardrails for keys, signing, and threat detection
+
+rules:
+  private_key_protection:
+    action: BLOCK
+    description: NEVER log, expose, or return private keys or seed phrases
+    key_storage: [aws_kms, hsm]
+    override: none
+
+  blind_signing_block:
+    action: BLOCK
+    description: NEVER sign without full decode and display of all parameters
+    on_opaque_payload: reject
+
+  phishing_detection:
+    action: BLOCK
+    feeds: [goplus, forta, webacy]
+    maintain_blocklist: true
+
+  rug_pull_indicators:
+    action: WARN
+    checks:
+      - liquidity_lock_status
+      - ownership_renounced
+      - mint_pause_access
+      - top_holder_concentration_threshold: 0.30
+
+  honeypot_detection:
+    action: BLOCK
+    method: simulate_buy_and_sell
+    on_sell_fail: block
+    api: goplus_token_security
+
+  scam_address_screening:
+    action: BLOCK
+    sources: [ofac_sdn, chainalysis, elliptic, ethereum_abuse_db, trm_labs]
+
+  signature_replay_protection:
+    action: BLOCK
+    validate: [nonce, expiry]
+    standard: eip712
+
+  contract_age_check:
+    action: WARN
+    warn_if_days: 30
+    escalate_if_days: 7
+    condition: high_value_interaction

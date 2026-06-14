@@ -1,0 +1,41 @@
+{
+  "version": "0.1.0",
+  "skills": [
+    {"name": "using-blockchain-agent-skills", "path": "skills/using-blockchain-agent-skills", "phase": "meta", "category": "orchestration"},
+    {"name": "chain-abstraction", "path": "skills/chain-abstraction", "phase": 1, "category": "infrastructure", "chains": ["ethereum", "arbitrum", "base", "polygon"]},
+    {"name": "transaction-lifecycle", "path": "skills/transaction-lifecycle", "phase": 1, "category": "infrastructure", "chains": ["ethereum", "arbitrum", "base", "polygon"]},
+    {"name": "block-state-queries", "path": "skills/block-state-queries", "phase": 1, "category": "infrastructure", "chains": ["ethereum", "arbitrum", "base", "polygon"]},
+    {"name": "smart-contract-factory", "path": "skills/smart-contract-factory", "phase": 2, "category": "contracts"},
+    {"name": "event-indexing", "path": "skills/event-indexing", "phase": 2, "category": "data"},
+    {"name": "token-standards-engine", "path": "skills/token-standards-engine", "phase": 2, "category": "tokens"},
+    {"name": "rollup-operations", "path": "skills/rollup-operations", "phase": 3, "category": "rollups"},
+    {"name": "data-availability", "path": "skills/data-availability", "phase": 3, "category": "da"},
+    {"name": "privacy-zk", "path": "skills/privacy-zk", "phase": 3, "category": "privacy"},
+    {"name": "storage-state-proofs", "path": "skills/storage-state-proofs", "phase": 3, "category": "proofs"},
+    {"name": "consensus-validator-ops", "path": "skills/consensus-validator-ops", "phase": 4, "category": "validators"},
+    {"name": "network-monitoring", "path": "skills/network-monitoring", "phase": 4, "category": "monitoring"}
+  ],
+  "mcp_servers": [
+    {"name": "evm-rpc-server", "path": "mcp/evm-rpc-server", "chains": ["ethereum", "polygon", "arbitrum", "base", "optimism", "avalanche", "bnb", "zksync", "starknet"], "status": "scaffold"},
+    {"name": "solana-rpc-server", "path": "mcp/solana-rpc-server", "chains": ["solana"], "status": "planned"},
+    {"name": "near-rpc-server", "path": "mcp/near-rpc-server", "chains": ["near", "aurora"], "status": "planned"},
+    {"name": "cosmos-rpc-server", "path": "mcp/cosmos-rpc-server", "chains": ["cosmos", "osmosis", "celestia", "injective"], "status": "planned"},
+    {"name": "move-rpc-server", "path": "mcp/move-rpc-server", "chains": ["sui", "aptos"], "status": "planned"},
+    {"name": "bitcoin-rpc-server", "path": "mcp/bitcoin-rpc-server", "chains": ["bitcoin", "lightning", "stacks"], "status": "planned"},
+    {"name": "ton-rpc-server", "path": "mcp/ton-rpc-server", "chains": ["ton"], "status": "planned"},
+    {"name": "substrate-rpc-server", "path": "mcp/substrate-rpc-server", "chains": ["polkadot", "kusama", "moonbeam"], "status": "planned"}
+  ],
+  "agents": [
+    {"name": "blockchain-supervisor", "path": "agents/blockchain-supervisor.md"},
+    {"name": "chain-interaction-agent", "path": "agents/chain-interaction-agent.md"},
+    {"name": "contract-agent", "path": "agents/contract-agent.md"},
+    {"name": "validator-da-agent", "path": "agents/validator-da-agent.md"},
+    {"name": "rollup-zk-agent", "path": "agents/rollup-zk-agent.md"}
+  ],
+  "guardrails": [
+    "guardrails/transaction-safety.yaml",
+    "guardrails/security.yaml",
+    "guardrails/compliance.yaml",
+    "guardrails/denied-topics.yaml"
+  ]
+}

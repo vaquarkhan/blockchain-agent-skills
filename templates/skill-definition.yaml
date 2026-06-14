@@ -1,0 +1,21 @@
+name: chain-abstraction
+version: "0.1.0"
+category: infrastructure
+phase: 1
+supported_chains:
+  - ethereum
+  - arbitrum
+  - base
+  - polygon
+frameworks:
+  - bedrock-agentcore
+  - mcp
+mcp_tools:
+  - evm-rpc-server
+guardrail_refs:
+  - guardrails/transaction-safety.yaml
+  - guardrails/security.yaml
+confidence_scoring:
+  high: simulation_pass_and_fresh_rpc
+  medium: simulation_pass_stale_rpc
+  low: edge_case_or_partial_data

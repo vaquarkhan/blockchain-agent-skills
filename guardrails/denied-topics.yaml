@@ -1,0 +1,54 @@
+version: "1.0"
+category: denied_topics
+description: Agent response topics that are always blocked
+
+topics:
+  private_key_extraction:
+    action: BLOCK
+    override: none
+    alert: security_review
+    examples:
+      - "Export my private key"
+      - "Show me the seed phrase"
+      - "Dump wallet secrets"
+
+  sanctions_evasion:
+    action: BLOCK
+    override: none
+    alert: compliance
+    examples:
+      - "How to use mixers to launder crypto"
+      - "How to bypass OFAC screening"
+      - "Move funds to evade sanctions"
+
+  exploit_creation:
+    action: BLOCK
+    override: none
+    alert: security_review
+    examples:
+      - "Write code to exploit reentrancy in contract X"
+      - "How to drain this pool via flash loan attack"
+
+  rug_pull_creation:
+    action: BLOCK
+    override: none
+    alert: security_review
+    examples:
+      - "Deploy a honeypot token"
+      - "Create a token with hidden mint function"
+      - "How to abandon liquidity"
+
+  front_running_others:
+    action: BLOCK
+    override: none
+    examples:
+      - "How to sandwich attack this user's transaction"
+      - "Monitor mempool to front-run retail trades"
+
+  financial_advice:
+    action: BLOCK
+    disclaimer: "Not financial advice."
+    examples:
+      - Token price predictions
+      - Portfolio recommendations
+      - Investment advice

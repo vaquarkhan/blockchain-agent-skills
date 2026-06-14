@@ -1,0 +1,60 @@
+version: "1.0"
+category: transaction_safety
+description: Rules applied before any transaction broadcast
+
+rules:
+  simulate_before_broadcast:
+    action: BLOCK
+    description: ALL transactions must be simulated before mainnet broadcast
+    methods:
+      evm: eth_call
+      solana: simulateTransaction
+      near: dry-run via view
+      cosmos: simulate
+      move: simulateTransaction / dry-run
+    on_revert: block_broadcast
+
+  max_value_without_confirmation:
+    action: REQUIRE_HUMAN_CONFIRM
+    threshold_usd: 10000
+    description: Transactions exceeding threshold require explicit human confirmation
+
+  unverified_contract_block:
+    action: BLOCK
+    description: Block interaction with unverified contracts
+    explorers: [etherscan, blockscout, sourcify]
+    on_unverified: block
+    on_unaudited: warn
+
+  unlimited_approval_warning:
+    action: WARN
+    pattern: "type(uint256).max"
+    suggestion: bounded approval amounts
+
+  destination_validation:
+    action: BLOCK
+    formats:
+      evm: eip55_checksum
+      solana: base58
+      cosmos: bech32
+      bitcoin: bech32_or_base58
+      near: named_or_implicit
+
+  gas_limit_validation:
+    action: BLOCK
+    max_multiplier: 10
+    description: Reject gas limits >10x estimated
+
+  nonce_management:
+    action: ALERT
+    maintain_registry: true
+    on_gap: alert
+    replace_pending: require_explicit_override
+
+  reorg_protection:
+    action: WAIT
+    confirmation_depth:
+      ethereum: 12
+      bnb: 15
+      bitcoin: 6
+      solana: 32

@@ -1,0 +1,47 @@
+version: "1.0"
+category: compliance
+description: AML, sanctions, and audit trail requirements
+
+rules:
+  sanctions_screening:
+    action: BLOCK
+    lists: [ofac_sdn, eu_consolidated, un, uk_hmt]
+    override: none
+    apply_to: all_counterparties
+
+  travel_rule_enforcement:
+    action: REQUIRE
+    threshold_usd: 1000
+    standard: fatf_travel_rule
+    scope: vasp_to_vasp
+
+  mixer_tumbler_block:
+    action: BLOCK
+    known_mixers: [tornado_cash, sinbad, chipmixer]
+    warn_mixer_exposure_threshold: 0.10
+
+  audit_trail:
+    action: REQUIRE
+    store: dynamodb
+    retention_years: 7
+    log:
+      - signed_transaction_payloads
+      - simulation_results
+      - broadcast_receipts
+    immutable: true
+
+  aml_transaction_monitoring:
+    action: FLAG
+    patterns:
+      - structuring
+      - rapid_layering
+      - unusual_velocity
+
+  rate_limiting:
+    action: ENFORCE
+    limits_per_second:
+      evm: 100
+      solana: 50
+      near: 30
+      cosmos: 30
+    backoff: exponential_with_jitter

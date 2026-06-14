@@ -1,0 +1,37 @@
+name: evm-rpc-server
+version: "0.1.0"
+transport: sse
+auth:
+  oauth: aws_cognito
+  api_key_fallback: true
+
+chains:
+  ethereum:
+    chainId: 1
+    rpc_primary: "${ALCHEMY_ETH_URL}"
+    rpc_fallback: "${INFURA_ETH_URL}"
+    blockTime: 12
+    confirmationDepth: 12
+  arbitrum:
+    chainId: 42161
+    rpc_primary: "${ALCHEMY_ARB_URL}"
+    blockTime: 0.25
+    confirmationDepth: 20
+  base:
+    chainId: 8453
+    rpc_primary: "${ALCHEMY_BASE_URL}"
+    blockTime: 2
+    confirmationDepth: 20
+  polygon:
+    chainId: 137
+    rpc_primary: "${ALCHEMY_POLYGON_URL}"
+    blockTime: 2
+    confirmationDepth: 128
+
+rate_limit:
+  requests_per_second: 100
+  backoff: exponential_jitter
+
+retry:
+  max_attempts: 3
+  timeout_seconds: 30
