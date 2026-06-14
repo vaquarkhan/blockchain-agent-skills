@@ -1,0 +1,17 @@
+{
+  "name": "bitcoin-rpc",
+  "description": "Bitcoin Core JSON-RPC for chain info and transaction lookup.",
+  "transport": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["mcp/bitcoin-rpc-server/server.py"],
+    "env": {
+      "BITCOIN_RPC_URL": "${BITCOIN_RPC_URL}"
+    }
+  },
+  "metadata": {
+    "chains": ["bitcoin"],
+    "validation": ["python scripts/validate-mcp-servers.py"],
+    "best_for": ["getblockchaininfo", "getrawtransaction"]
+  }
+}

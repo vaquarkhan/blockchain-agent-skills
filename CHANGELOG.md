@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.1
+
+- Phase 3–4 chain providers (Move, Bitcoin, TON, Substrate) and 22-chain registry
+- MCP flat templates for move, bitcoin, ton, substrate servers
+- Updated coverage roadmap and EVM MCP docs to reflect implemented status
+- Removed DE placeholder images and reference tree artifact
+
 ## 0.3.0
 
 - Full MCP server implementations (8 servers, 30 tools) with schema parity validation

@@ -1,0 +1,18 @@
+{
+  "name": "move-rpc",
+  "description": "Move VM RPC access for Sui and Aptos object reads and view calls.",
+  "transport": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["mcp/move-rpc-server/server.py"],
+    "env": {
+      "SUI_RPC_URL": "${SUI_RPC_URL}",
+      "APTOS_RPC_URL": "${APTOS_RPC_URL}"
+    }
+  },
+  "metadata": {
+    "chains": ["sui", "aptos"],
+    "validation": ["python scripts/validate-mcp-servers.py"],
+    "best_for": ["sui_getObject", "aptos_view"]
+  }
+}

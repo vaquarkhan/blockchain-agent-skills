@@ -54,6 +54,28 @@ def test_cosmos_address():
     assert not validate_address("cosmos", "osmo1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqn7qd5x")
 
 
+def test_move_resolve():
+    meta = resolve_chain("sui")
+    assert meta.mcp_server == "move-rpc-server"
+    assert meta.vm_type.value == "move"
+
+
+def test_bitcoin_resolve():
+    meta = resolve_chain("bitcoin")
+    assert meta.mcp_server == "bitcoin-rpc-server"
+    assert meta.confirmation_depth == 6
+
+
+def test_ton_resolve():
+    meta = resolve_chain("ton")
+    assert meta.mcp_server == "ton-rpc-server"
+
+
+def test_substrate_resolve():
+    meta = resolve_chain("polkadot")
+    assert meta.mcp_server == "substrate-rpc-server"
+
+
 if __name__ == "__main__":
     test_evm_resolve()
     test_evm_address()
@@ -63,4 +85,8 @@ if __name__ == "__main__":
     test_near_address()
     test_cosmos_resolve()
     test_cosmos_address()
-    print("All 8 tests passed")
+    test_move_resolve()
+    test_bitcoin_resolve()
+    test_ton_resolve()
+    test_substrate_resolve()
+    print("All 12 tests passed")

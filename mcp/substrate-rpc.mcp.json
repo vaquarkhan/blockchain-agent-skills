@@ -1,0 +1,17 @@
+{
+  "name": "substrate-rpc",
+  "description": "Substrate JSON-RPC for Polkadot ecosystem health and blocks.",
+  "transport": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["mcp/substrate-rpc-server/server.py"],
+    "env": {
+      "SUBSTRATE_RPC_URL": "${SUBSTRATE_RPC_URL}"
+    }
+  },
+  "metadata": {
+    "chains": ["polkadot", "kusama", "moonbeam"],
+    "validation": ["python scripts/validate-mcp-servers.py"],
+    "best_for": ["chain_getBlock", "system_health"]
+  }
+}

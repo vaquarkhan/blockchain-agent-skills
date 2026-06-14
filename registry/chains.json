@@ -1,16 +1,28 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.1",
   "chains": {
     "ethereum": {"chainId": "1", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
     "arbitrum": {"chainId": "42161", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
     "base": {"chainId": "8453", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
     "polygon": {"chainId": "137", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
+    "optimism": {"chainId": "10", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
+    "avalanche": {"chainId": "43114", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
+    "bnb": {"chainId": "56", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
+    "zksync": {"chainId": "324", "vm": "evm", "phase": 3, "mcp": "evm-rpc-server"},
+    "starknet": {"chainId": "SN_MAIN", "vm": "evm", "phase": 3, "mcp": "evm-rpc-server"},
     "solana": {"chainId": "mainnet-beta", "vm": "svm", "phase": 2, "mcp": "solana-rpc-server"},
     "near": {"chainId": "mainnet", "vm": "near", "phase": 2, "mcp": "near-rpc-server"},
     "aurora": {"chainId": "1313161554", "vm": "evm", "phase": 2, "mcp": "near-rpc-server"},
     "cosmos": {"chainId": "cosmoshub-4", "vm": "cosmos", "phase": 2, "mcp": "cosmos-rpc-server", "bech32": "cosmos"},
     "osmosis": {"chainId": "osmosis-1", "vm": "cosmos", "phase": 2, "mcp": "cosmos-rpc-server", "bech32": "osmo"},
     "celestia": {"chainId": "celestia", "vm": "cosmos", "phase": 2, "mcp": "cosmos-rpc-server", "bech32": "celestia"},
-    "injective": {"chainId": "injective-1", "vm": "cosmos", "phase": 2, "mcp": "cosmos-rpc-server", "bech32": "inj"}
+    "injective": {"chainId": "injective-1", "vm": "cosmos", "phase": 2, "mcp": "cosmos-rpc-server", "bech32": "inj"},
+    "sui": {"chainId": "mainnet", "vm": "move", "phase": 3, "mcp": "move-rpc-server"},
+    "aptos": {"chainId": "mainnet", "vm": "move", "phase": 3, "mcp": "move-rpc-server"},
+    "bitcoin": {"chainId": "mainnet", "vm": "utxo", "phase": 4, "mcp": "bitcoin-rpc-server"},
+    "ton": {"chainId": "mainnet", "vm": "tvm", "phase": 4, "mcp": "ton-rpc-server"},
+    "polkadot": {"chainId": "polkadot", "vm": "substrate", "phase": 4, "mcp": "substrate-rpc-server"},
+    "kusama": {"chainId": "kusama", "vm": "substrate", "phase": 4, "mcp": "substrate-rpc-server"},
+    "moonbeam": {"chainId": "moonbeam", "vm": "substrate", "phase": 4, "mcp": "substrate-rpc-server"}
   }
 }

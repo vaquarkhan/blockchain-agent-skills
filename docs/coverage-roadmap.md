@@ -1,23 +1,21 @@
 # Coverage Roadmap
 
-Implementation priority aligned with [TECHNICAL-REFERENCE.md](TECHNICAL-REFERENCE.md) Section 6.
+Implementation status as of **v0.3.1**. See [TECHNICAL-REFERENCE.md](TECHNICAL-REFERENCE.md).
 
-## Phase 1 — EVM Core (complete)
+## Phase 1 — EVM Core (implemented)
 
 **Skills:** chain-abstraction, transaction-lifecycle, block-state-queries  
-**MCP:** evm-rpc-server (config scaffold)  
-**Chains:** Ethereum, Arbitrum, Base, Polygon
+**MCP:** evm-rpc-server (11 tools, guarded write)  
+**Chains:** Ethereum, Arbitrum, Base, Polygon, Optimism, Avalanche, BNB, zkSync, Starknet
 
 | Component | Status |
 | --- | --- |
-| ChainProvider interface + EVM adapters | Done (`lib/chain_providers/evm.py`) |
-| EIP-1559 tx build/sign/simulate/broadcast | Skill scaffold |
-| eth_getBlock, eth_call, debug_traceCall | MCP scaffold |
-| Gas optimization | Planned |
-| Guardrails integration | Done |
-| Bedrock action groups (Lambda) | Template only |
+| ChainProvider + EVM adapters | Done |
+| MCP `server.py` + schema parity | Done |
+| Simulate-first + guardrails | Done |
+| Bedrock Lambda templates | Template scaffold in `templates/skill-definition.yaml` |
 
-## Phase 2 — Alt-L1s (current)
+## Phase 2 — Alt-L1s (implemented)
 
 **Skills:** smart-contract-factory, token-standards-engine, event-indexing  
 **MCP:** solana-rpc-server, near-rpc-server, cosmos-rpc-server  
@@ -25,25 +23,44 @@ Implementation priority aligned with [TECHNICAL-REFERENCE.md](TECHNICAL-REFERENC
 
 | Component | Status |
 | --- | --- |
-| Solana/NEAR/Cosmos ChainProvider adapters | Done (`lib/chain_providers/`) |
-| solana-rpc-server config + tool schemas | Done |
-| near-rpc-server config + tool schemas | Done |
-| cosmos-rpc-server config + IBC tools | Done |
-| Phase 2 skill expansions (Anchor, NEP, CW) | Done |
-| MCP server.py runtime (Python) | Planned |
-| Lambda handlers for Phase 2 skills | Planned |
+| ChainProvider adapters | Done |
+| MCP servers (4 tools each) | Done |
+| Skill depth + verification checklists | Done |
 
-## Phase 3 — ZK & Move
+## Phase 3 — ZK & Move (implemented — read paths)
 
 **Skills:** rollup-operations, data-availability, privacy-zk, storage-state-proofs  
-**MCP:** move-rpc-server (+ extended evm for zkSync/Starknet)  
-**Chains:** Starknet, zkSync Era, Sui, Aptos
+**MCP:** move-rpc-server + extended EVM for L2/zkSync/Starknet routing  
+**Chains:** Sui, Aptos, Starknet, zkSync Era
 
-## Phase 4 — Legacy & Niche
+| Component | Status |
+| --- | --- |
+| move-rpc-server | Done (Sui + Aptos view tools) |
+| ChainProvider metadata | Done |
+| ZK proof generation | Skill guidance; prover integration external |
+
+## Phase 4 — Legacy & Niche (implemented — read paths)
 
 **Skills:** consensus-validator-ops, network-monitoring  
 **MCP:** bitcoin-rpc-server, ton-rpc-server, substrate-rpc-server  
-**Chains:** Bitcoin L2s, TON, Polkadot, Hedera
+**Chains:** Bitcoin, TON, Polkadot, Kusama, Moonbeam
+
+| Component | Status |
+| --- | --- |
+| MCP servers | Done |
+| ChainProvider metadata | Done |
+| Validator key rotation templates | Done (`templates/validator-rotation-plan.yaml`) |
+
+## Validation
+
+```bash
+python scripts/validate-skills.py
+python scripts/validate-assets.py
+python scripts/validate-mcp-servers.py
+python tests/test_chain_providers.py
+python tests/test_mcp_servers.py
+python evals/run.py
+```
 
 ## Multi-region CDK (Bedrock AgentCore)
 
@@ -53,4 +70,4 @@ Implementation priority aligned with [TECHNICAL-REFERENCE.md](TECHNICAL-REFERENC
 | ap-south-1 | NEAR, Solana, India DPDP compliance |
 | ap-southeast-1 | TON, BNB, Cosmos SEA, Sui |
 | eu-west-1 | Polkadot, zkSync, Starknet — MiCA |
-| me-south-1 | Hedera, Bitcoin — VARA / Tadawul |
+| me-south-1 | Bitcoin, Hedera — VARA / Tadawul |

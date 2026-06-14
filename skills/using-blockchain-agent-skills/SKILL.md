@@ -17,8 +17,8 @@ All write operations enforce **simulate-first** validation and **guardrail check
 | --- | --- | --- |
 | Tier 1 | EVM chains via `lib/chain_providers/evm.py` | Implemented |
 | Tier 2 | Solana, NEAR, Cosmos via `lib/chain_providers/` | Implemented |
-| Tier 3 | Move (Sui/Aptos), ZK rollups, DA layers | Roadmap — use MCP scaffolds + manual routing |
-| Tier 4 | Bitcoin, TON, Substrate, Hedera | Roadmap — document limitations honestly |
+| Tier 3 | Move (Sui/Aptos), ZK rollups, DA layers | `move-rpc-server` + EVM L2 routing |
+| Tier 4 | Bitcoin, TON, Substrate | `bitcoin-rpc-server`, `ton-rpc-server`, `substrate-rpc-server` |
 
 **Lifecycle commands:**
 
@@ -89,10 +89,10 @@ Confirm required MCP server before `/simulate`:
 | solana-rpc-server | Solana | `simulateTransaction`, `getAccountInfo` |
 | near-rpc-server | NEAR, Aurora | `view_function`, `send_tx` |
 | cosmos-rpc-server | Cosmos Hub, Osmosis, Celestia, Injective | `abci_query`, `broadcast_tx` |
-| move-rpc-server | Sui, Aptos | Tier 3 roadmap |
-| bitcoin-rpc-server | Bitcoin, Lightning, Stacks | Tier 4 roadmap |
-| ton-rpc-server | TON | Tier 4 roadmap |
-| substrate-rpc-server | Polkadot, Moonbeam, Astar | Tier 4 roadmap |
+| move-rpc-server | Sui, Aptos | Implemented |
+| bitcoin-rpc-server | Bitcoin, Lightning, Stacks | Implemented |
+| ton-rpc-server | TON | Implemented |
+| substrate-rpc-server | Polkadot, Moonbeam, Astar | Implemented |
 
 If required MCP is unavailable, **stop** and document blocking status — do not invent RPC methods.
 

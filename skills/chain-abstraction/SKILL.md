@@ -20,8 +20,8 @@ Provides a **ChainProvider** interface that normalizes chain-specific difference
 | --- | --- | --- |
 | Tier 1 | Ethereum, Arbitrum, Base, Polygon | `lib/chain_providers/evm.py` — full `resolve_chain()`, `validate_address()` |
 | Tier 2 | Solana, NEAR, Aurora, Cosmos Hub, Osmosis, Celestia, Injective | `lib/chain_providers/solana.py`, `near.py`, `cosmos.py` |
-| Tier 3 | Sui, Aptos, Starknet, zkSync | Roadmap — manual MCP routing via `move-rpc-server` |
-| Tier 4 | Bitcoin, TON, Polkadot, Moonbeam | Roadmap — document limitations; do not invent adapters |
+| Tier 3 | Sui, Aptos, Starknet, zkSync | `lib/chain_providers/move.py` + `move-rpc-server`; EVM L2 via `evm-rpc-server` |
+| Tier 4 | Bitcoin, TON, Polkadot, Kusama, Moonbeam | `lib/chain_providers/bitcoin.py`, `ton.py`, `substrate.py` + matching MCP servers |
 
 All write operations downstream must follow simulate-first lifecycle and apply guardrails from `guardrails/transaction-safety.yaml`, `security.yaml`, and `compliance.yaml`.
 
@@ -67,10 +67,10 @@ EVM chains     → evm-rpc-server      (eth_call, eth_getBalance, eth_sendRawTra
 Solana         → solana-rpc-server   (getAccountInfo, simulateTransaction)
 NEAR/Aurora    → near-rpc-server     (view_function, send_tx)
 Cosmos/IBC     → cosmos-rpc-server   (abci_query, broadcast_tx)
-Sui/Aptos      → move-rpc-server     (Tier 3 — roadmap)
-Bitcoin        → bitcoin-rpc-server  (Tier 4 — roadmap)
-TON            → ton-rpc-server      (Tier 4 — roadmap)
-Substrate      → substrate-rpc-server (Tier 4 — roadmap)
+Sui/Aptos      → move-rpc-server
+Bitcoin        → bitcoin-rpc-server
+TON            → ton-rpc-server
+Substrate      → substrate-rpc-server
 ```
 
 ### Step 4: RPC fallback and health

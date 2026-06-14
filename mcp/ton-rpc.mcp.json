@@ -1,0 +1,17 @@
+{
+  "name": "ton-rpc",
+  "description": "TON HTTP API for address state queries.",
+  "transport": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["mcp/ton-rpc-server/server.py"],
+    "env": {
+      "TON_API_URL": "${TON_API_URL}"
+    }
+  },
+  "metadata": {
+    "chains": ["ton"],
+    "validation": ["python scripts/validate-mcp-servers.py"],
+    "best_for": ["getAddressInformation"]
+  }
+}
