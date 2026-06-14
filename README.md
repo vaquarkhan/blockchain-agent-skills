@@ -19,8 +19,8 @@ Ethereum, NEAR, Solana, Polygon, Arbitrum, Optimism, Base, Avalanche, BNB Chain,
 
 | Phase | Focus | Status |
 | --- | --- | --- |
-| **Phase 1** | EVM Core — chain abstraction, tx lifecycle, state queries, gas | In progress |
-| **Phase 2** | Alt-L1s — Solana, NEAR, Cosmos, token standards, event indexing | Planned |
+| **Phase 1** | EVM Core — chain abstraction, tx lifecycle, state queries, gas | Complete |
+| **Phase 2** | Alt-L1s — contracts, tokens, events, Solana/NEAR/Cosmos MCP | In progress |
 | **Phase 3** | ZK & Move — rollups, DA, privacy, Sui/Aptos | Planned |
 | **Phase 4** | Legacy & niche — Bitcoin, TON, Polkadot, Hedera, validator ops | Planned |
 

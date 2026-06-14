@@ -42,6 +42,26 @@ Mint, transfer, approve (EVM), or chain-native equivalent via `transaction-lifec
 
 Parse Transfer/Mint events from receipt logs; confirm balance change via `block-state-queries`.
 
+## Phase 2 — Chain-specific adapters
+
+### Solana SPL / Token-2022
+
+- Detect mint via `getTokenAccountsByOwner`
+- Token-2022 extensions: transfer hook, confidential transfers, non-transferable
+- cNFTs: Merkle tree state via Bubblegum program + DAS API (`getAsset`)
+
+### NEAR NEP-141 / NEP-171
+
+- Fungible: `ft_transfer`, `ft_transfer_call` with storage deposit (NEP-145)
+- NFT: `nft_transfer`, metadata via NEP-177
+- Storage: 0.0001 NEAR/byte — check `view_account` storage usage before transfer
+
+### Cosmos CW-20 / CW-721 / ICS-20
+
+- Query token info via CosmWasm smart query: `{ "token_info": {} }`
+- IBC transfer: build ICS-20 msg via `cosmos-rpc-server` `ibc_transfer`
+- Track IBC denom trace via `get_ibc_denom_trace`
+
 ## Verification
 
 - [ ] Standard detected correctly

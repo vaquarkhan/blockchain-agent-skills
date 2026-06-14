@@ -1,0 +1,58 @@
+{
+  "tools": [
+    {
+      "name": "broadcast_tx",
+      "description": "Broadcast signed Cosmos SDK transaction",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "chain_id": {"type": "string", "description": "e.g. cosmoshub-4"},
+          "tx_bytes_base64": {"type": "string"}
+        },
+        "required": ["chain_id", "tx_bytes_base64"]
+      }
+    },
+    {
+      "name": "abci_query",
+      "description": "Query CosmWasm contract or module state",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {"type": "string"},
+          "data_base64": {"type": "string"},
+          "height": {"type": "string", "default": "0"}
+        },
+        "required": ["path"]
+      }
+    },
+    {
+      "name": "ibc_transfer",
+      "description": "ICS-20 fungible token transfer via IBC",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source_port": {"type": "string", "default": "transfer"},
+          "source_channel": {"type": "string"},
+          "token_denom": {"type": "string"},
+          "amount": {"type": "string"},
+          "sender": {"type": "string"},
+          "receiver": {"type": "string"},
+          "timeout_height": {"type": "object"},
+          "memo": {"type": "string"}
+        },
+        "required": ["source_channel", "token_denom", "amount", "sender", "receiver"]
+      }
+    },
+    {
+      "name": "query_client_state",
+      "description": "Query IBC client state",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "client_id": {"type": "string"}
+        },
+        "required": ["client_id"]
+      }
+    }
+  ]
+}

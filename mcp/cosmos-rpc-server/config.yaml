@@ -1,0 +1,46 @@
+name: cosmos-rpc-server
+version: "0.1.0"
+transport: sse
+auth:
+  oauth: aws_cognito
+  api_key_fallback: true
+
+chains:
+  cosmoshub-4:
+    name: cosmos
+    bech32_prefix: cosmos
+    rpc_primary: "${COSMOS_HUB_RPC}"
+    rpc_fallback: "https://rpc.cosmos.network"
+    blockTime: 6
+    confirmationDepth: 7
+  osmosis-1:
+    name: osmosis
+    bech32_prefix: osmo
+    rpc_primary: "${OSMOSIS_RPC}"
+    blockTime: 2
+    confirmationDepth: 7
+  celestia:
+    name: celestia
+    bech32_prefix: celestia
+    rpc_primary: "${CELESTIA_RPC}"
+    blockTime: 6
+    confirmationDepth: 7
+  injective-1:
+    name: injective
+    bech32_prefix: inj
+    rpc_primary: "${INJECTIVE_RPC}"
+    blockTime: 1
+    confirmationDepth: 7
+
+rate_limit:
+  requests_per_second: 30
+  backoff: exponential_jitter
+
+retry:
+  max_attempts: 3
+  timeout_seconds: 30
+
+features:
+  ibc_transfer: true
+  interchain_accounts: true
+  interchain_queries: true

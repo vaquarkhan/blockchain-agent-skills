@@ -1,0 +1,31 @@
+name: solana-rpc-server
+version: "0.1.0"
+transport: sse
+auth:
+  oauth: aws_cognito
+  api_key_fallback: true
+
+networks:
+  mainnet-beta:
+    rpc_primary: "${HELIUS_SOL_URL}"
+    rpc_fallback: "${QUICKNODE_SOL_URL}"
+    blockTime: 0.4
+    confirmationDepth: 32
+  devnet:
+    rpc_primary: "${HELIUS_SOL_DEVNET_URL}"
+    blockTime: 0.4
+    confirmationDepth: 32
+
+rate_limit:
+  requests_per_second: 50
+  backoff: exponential_jitter
+
+retry:
+  max_attempts: 3
+  timeout_seconds: 30
+
+features:
+  priority_fees: true
+  jito_tips: true
+  versioned_transactions: true
+  address_lookup_tables: true

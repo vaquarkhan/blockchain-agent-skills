@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "chains": {
+    "ethereum": {"chainId": "1", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
+    "arbitrum": {"chainId": "42161", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
+    "base": {"chainId": "8453", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
+    "polygon": {"chainId": "137", "vm": "evm", "phase": 1, "mcp": "evm-rpc-server"},
+    "solana": {"chainId": "mainnet-beta", "vm": "svm", "phase": 2, "mcp": "solana-rpc-server"},
+    "near": {"chainId": "mainnet", "vm": "near", "phase": 2, "mcp": "near-rpc-server"},
+    "aurora": {"chainId": "1313161554", "vm": "evm", "phase": 2, "mcp": "near-rpc-server"},
+    "cosmos": {"chainId": "cosmoshub-4", "vm": "cosmos", "phase": 2, "mcp": "cosmos-rpc-server", "bech32": "cosmos"},
+    "osmosis": {"chainId": "osmosis-1", "vm": "cosmos", "phase": 2, "mcp": "cosmos-rpc-server", "bech32": "osmo"},
+    "celestia": {"chainId": "celestia", "vm": "cosmos", "phase": 2, "mcp": "cosmos-rpc-server", "bech32": "celestia"},
+    "injective": {"chainId": "injective-1", "vm": "cosmos", "phase": 2, "mcp": "cosmos-rpc-server", "bech32": "inj"}
+  }
+}

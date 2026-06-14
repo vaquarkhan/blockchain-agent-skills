@@ -40,6 +40,30 @@ fromBlock, toBlock (or "latest" with reorg buffer)
 
 Optional: webhook, SNS, or DynamoDB stream for downstream consumers.
 
+## Phase 2 — Alt-L1 event sources
+
+### Solana
+
+| Source | Method |
+| --- | --- |
+| Real-time | Geyser plugin / WebSocket `logsSubscribe` |
+| Program logs | `getSignaturesForAddress` + tx meta log parsing |
+| DAS events | Helius enhanced webhooks for NFT transfers |
+
+Reorg handling: Solana uses commitment levels (`confirmed` → 32 slots for finality).
+
+### NEAR
+
+- Index via `EXPERIMENTAL_tx_status` and receipt logs
+- Cross-shard: track promise callbacks in receipt tree
+- Event format: JSON logs emitted via `env::log`
+
+### Cosmos / IBC
+
+- Tendermint WS: `subscribe` to `tm.event='Tx'`
+- IBC packets: index `send_packet`, `recv_packet`, `acknowledge_packet`, `timeout_packet`
+- CosmWasm: `wasm-contract-event` attributes in tx result
+
 ## Verification
 
 - [ ] Event filter matches expected ABI

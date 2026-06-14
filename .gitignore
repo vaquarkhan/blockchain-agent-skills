@@ -38,3 +38,7 @@ htmlcov/
 # Logs
 *.log
 audit-local/
+
+# Local config overrides
+config.local.yaml
+*.local.yaml

@@ -1,0 +1,35 @@
+name: near-rpc-server
+version: "0.1.0"
+transport: sse
+auth:
+  oauth: aws_cognito
+  api_key_fallback: true
+
+networks:
+  mainnet:
+    rpc_primary: "https://rpc.mainnet.near.org"
+    rpc_fallback: "${PAGODA_NEAR_URL}"
+    blockTime: 1.0
+    confirmationDepth: 5
+  testnet:
+    rpc_primary: "https://rpc.testnet.near.org"
+    blockTime: 1.0
+    confirmationDepth: 5
+  aurora:
+    chainId: 1313161554
+    rpc_primary: "https://mainnet.aurora.dev"
+    blockTime: 1.0
+    confirmationDepth: 10
+
+rate_limit:
+  requests_per_second: 30
+  backoff: exponential_jitter
+
+retry:
+  max_attempts: 3
+  timeout_seconds: 30
+
+features:
+  chain_signatures: true
+  storage_staking: true
+  cross_shard_calls: true

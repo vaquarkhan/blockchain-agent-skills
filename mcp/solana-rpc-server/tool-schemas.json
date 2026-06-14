@@ -1,0 +1,52 @@
+{
+  "tools": [
+    {
+      "name": "getAccountInfo",
+      "description": "Read Solana account data and lamport balance",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "pubkey": {"type": "string", "description": "Base58 public key"},
+          "commitment": {"type": "string", "enum": ["processed", "confirmed", "finalized"], "default": "confirmed"}
+        },
+        "required": ["pubkey"]
+      }
+    },
+    {
+      "name": "simulateTransaction",
+      "description": "Simulate transaction before broadcast",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "transaction": {"type": "string", "description": "Base64-encoded serialized transaction"},
+          "commitment": {"type": "string", "default": "confirmed"}
+        },
+        "required": ["transaction"]
+      }
+    },
+    {
+      "name": "sendTransaction",
+      "description": "Broadcast signed transaction to Solana network",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "transaction": {"type": "string"},
+          "skipPreflight": {"type": "boolean", "default": false}
+        },
+        "required": ["transaction"]
+      }
+    },
+    {
+      "name": "getTokenAccountsByOwner",
+      "description": "List SPL token accounts owned by wallet",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "owner": {"type": "string"},
+          "mint": {"type": "string"}
+        },
+        "required": ["owner"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "tools": [
+    {
+      "name": "view_account",
+      "description": "View NEAR account balance and storage",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {"type": "string", "description": "Named or implicit account"},
+          "finality": {"type": "string", "enum": ["optimistic", "near_final", "final"], "default": "final"}
+        },
+        "required": ["account_id"]
+      }
+    },
+    {
+      "name": "query",
+      "description": "Call view method on NEAR contract",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "request_type": {"type": "string", "default": "call_function"},
+          "account_id": {"type": "string"},
+          "method_name": {"type": "string"},
+          "args_base64": {"type": "string"}
+        },
+        "required": ["account_id", "method_name"]
+      }
+    },
+    {
+      "name": "send_tx",
+      "description": "Broadcast signed NEAR transaction",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "signed_tx_base64": {"type": "string"}
+        },
+        "required": ["signed_tx_base64"]
+      }
+    },
+    {
+      "name": "view_access_key",
+      "description": "View access key nonce and allowance",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "account_id": {"type": "string"},
+          "public_key": {"type": "string"}
+        },
+        "required": ["account_id", "public_key"]
+      }
+    }
+  ]
+}

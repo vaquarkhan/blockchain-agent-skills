@@ -1,6 +1,6 @@
 ---
 name: chain-abstraction
-description: Unified multi-chain interaction across EVM, Solana, Cosmos, Move (Sui/Aptos), NEAR, and UTXO (Bitcoin). Resolves chain-specific tx models, address formats, and RPC endpoints via ChainProvider adapters. Trigger when selecting chains, normalizing addresses, routing RPC calls, or building cross-chain operations. Phase 1 implements EVM adapters (Ethereum, Arbitrum, Base, Polygon).
+description: Unified multi-chain interaction across EVM, Solana, Cosmos, Move (Sui/Aptos), NEAR, and UTXO (Bitcoin). Resolves chain-specific tx models, address formats, and RPC endpoints via ChainProvider adapters. Trigger when selecting chains, normalizing addresses, routing RPC calls, or building cross-chain operations. Phase 1 EVM + Phase 2 Solana, NEAR, Cosmos implemented in lib/chain_providers/.
 ---
 
 # Chain Abstraction
@@ -26,7 +26,7 @@ Provides a **ChainProvider** interface that normalizes chain-specific difference
 ### Step 1: Resolve chain
 
 1. Accept `chainName` or `chainId` parameter.
-2. Lookup in chain registry (`registry/assets.json` → `chains`).
+2. Lookup in chain registry (`registry/chains.json`) or call `lib.chain_providers.resolve_chain()`.
 3. Return normalized metadata: VM type, consensus, token standards, MCP server.
 
 ### Step 2: Validate address
@@ -72,6 +72,20 @@ Substrate      → substrate-rpc-server
 | Arbitrum One | 42161 | ~0.25s | 20 |
 | Base | 8453 | ~2s | 20 |
 | Polygon PoS | 137 | ~2s | 128 |
+
+## Phase 2 Alt-L1 chains
+
+| Chain | chainId | MCP server | Token standards |
+| --- | --- | --- | --- |
+| Solana | mainnet-beta | solana-rpc-server | SPL, Token-2022, Metaplex |
+| NEAR | mainnet | near-rpc-server | NEP-141, NEP-171 |
+| Aurora | 1313161554 | near-rpc-server | ERC-20 (EVM on NEAR) |
+| Cosmos Hub | cosmoshub-4 | cosmos-rpc-server | CW-20, ICS-20 |
+| Osmosis | osmosis-1 | cosmos-rpc-server | CW-20, ICS-20 |
+| Celestia | celestia | cosmos-rpc-server | ICS-20 |
+| Injective | injective-1 | cosmos-rpc-server | CW-20, ICS-20 |
+
+Implementation: `lib/chain_providers/` — use `resolve_chain(name)` and `validate_address(name, addr)`.
 
 ## Verification
 

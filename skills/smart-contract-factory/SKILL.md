@@ -1,6 +1,6 @@
 ---
 name: smart-contract-factory
-description: Deploy, upgrade (UUPS/Transparent/Diamond), verify, and interact with smart contracts. Supports Solidity, Cairo, Rust (Anchor/Ink!/Move), and CosmWasm across all chains. Trigger when deploying contracts, proxy upgrades, Etherscan verification, or complex multi-sig/diamond interactions. Phase 2+ for non-EVM VMs.
+description: Deploy, upgrade (UUPS/Transparent/Diamond), verify, and interact with smart contracts. Supports Solidity, Cairo, Rust (Anchor/Ink!/Move), and CosmWasm across all chains. Trigger when deploying contracts, proxy upgrades, Etherscan verification, or complex multi-sig/diamond interactions. Phase 2 implements Solana Anchor, NEAR, and CosmWasm deploy paths.
 ---
 
 # Smart Contract Factory
@@ -45,6 +45,35 @@ Post-deploy verification on chain explorer:
 | Diamond | facet cut on Diamond contract |
 
 Always simulate upgrade tx; verify storage layout compatibility.
+
+## Phase 2 — Alt-L1 deploy paths
+
+### Solana (Anchor)
+
+1. Parse Anchor IDL for automatic instruction builders.
+2. Deploy program via `solana program deploy`; record program ID.
+3. Initialize PDAs via `findProgramAddressSync(seeds, programId)`.
+4. Verify IDL on-chain; use `getProgramAccounts` for state reads.
+
+MCP: `solana-rpc-server` — `simulateTransaction` before every deploy/upgrade.
+
+### NEAR (Rust / near-sdk-rs)
+
+1. Deploy WASM contract to named account (e.g., `token.alice.near`).
+2. Register NEP-330 source metadata for explorer verification.
+3. Manage access keys: full-access for admin, function-call keys with method whitelist for agents.
+4. Cross-contract calls via async promises; handle callback gas.
+
+MCP: `near-rpc-server` — `view_contract_state`, `send_tx`.
+
+### Cosmos (CosmWasm)
+
+1. Upload WASM bytecode via `MsgStoreCode`.
+2. Instantiate contract with init msg JSON.
+3. Execute via `MsgExecuteContract`; query via `abci_query` with smart query JSON.
+4. IBC-enabled contracts: verify channel OPEN before cross-chain execute.
+
+MCP: `cosmos-rpc-server` — `broadcast_tx`, `abci_query`.
 
 ## Verification
 
