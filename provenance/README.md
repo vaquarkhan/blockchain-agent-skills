@@ -6,6 +6,7 @@ This folder records subject-matter review for skills, guardrails, MCP servers, a
 
 | File | Purpose |
 | --- | --- |
+| `provenance.yaml` | Authoritative standards catalog (EIP, OFAC, NIST, IBC, BOLT, HTS) with review dates |
 | `SME-REVIEW-LOG.md` | Chronological review entries with reviewer, scope, and outcome |
 | `skills-provenance.json` | Machine-readable map of skill → owner → last review → source refs |
 

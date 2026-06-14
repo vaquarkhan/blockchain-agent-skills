@@ -16,7 +16,7 @@ Contract lifecycle management across VM families:
 
 All deploy/upgrade/interact writes follow `/plan` → `/simulate` → `/confirm` → `/broadcast` → `/confirm-depth`. Signing via KMS only (`security.yaml`). Guardrails: `transaction-safety.yaml` (unverified contract block), `security.yaml` (contract age, blind signing), `compliance.yaml` (audit trail).
 
-**Tier 1** EVM Solidity: full path via `evm-rpc-server`. **Tier 2** Anchor, NEAR WASM, CosmWasm: implemented deploy paths. **Tier 3** Cairo/Move: roadmap.
+**Tier 1** EVM Solidity: full path via `evm-rpc-server`. **Tier 2** Anchor, NEAR WASM, CosmWasm: implemented deploy paths. **Tier 3** Cairo/Move: read paths via `move-rpc-server`; deploy requires external toolchain.
 
 ## When to Use
 

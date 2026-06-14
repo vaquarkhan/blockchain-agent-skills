@@ -12,7 +12,7 @@
 > **📦 [GitHub Releases](https://github.com/vaquarkhan/blockchain-agent-skills/releases/latest)** — VS Code `.vsix` and JetBrains plugin ZIP  
 > Companion: [compliance-agent-skills](https://github.com/vaquarkhan/compliance-agent-skills) | Pattern: [data-engineering-agent-skills](https://github.com/vaquarkhan/data-engineering-agent-skills)
 
-Production-grade **blockchain infrastructure** skills for AI agents — multi-chain RPC, transaction lifecycle, smart contracts, guardrails, MCP servers, and Bedrock AgentCore orchestration.
+Production-grade **blockchain infrastructure** skills for AI agents — multi-chain RPC, transaction lifecycle, smart contracts, guardrails, MCP servers, Bedrock AgentCore orchestration, and **SME provenance** (`provenance/provenance.yaml`).
 
 The goal is not generic Web3 prompts. The goal is **operating procedures** for simulate-first transactions, chain abstraction, compliance guardrails, and auditable multi-chain operations across 18 chains.
 

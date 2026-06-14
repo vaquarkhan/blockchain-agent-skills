@@ -47,6 +47,9 @@ jobs:
       - name: Validate MCP server implementations
         run: python scripts/validate-mcp-servers.py
 
+      - name: Validate provenance and reference guides
+        run: python scripts/validate-provenance.py
+
       - name: Sync and validate Bedrock handlers
         run: |
           python scripts/sync_bedrock_artifacts.py

@@ -1,0 +1,141 @@
+version: "0.5.0"
+review_policy: quarterly-tier1-semiannual-tier3
+repository: blockchain-agent-skills
+
+standards:
+  - id: eip-155
+    name: EIP-155 Chain ID in signatures
+    version: final
+    url: https://eips.ethereum.org/EIPS/eip-155
+    applies_to:
+      - skills/chain-abstraction
+      - skills/transaction-lifecycle
+      - guardrails/transaction-safety.yaml
+      - mcp/evm-rpc-server
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-09-13"
+    reviewer: platform-sme
+
+  - id: eip-4337
+    name: EIP-4337 Account Abstraction
+    version: final
+    url: https://eips.ethereum.org/EIPS/eip-4337
+    applies_to:
+      - skills/transaction-lifecycle
+      - references/simulate-first-lifecycle.md
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-09-13"
+    reviewer: platform-sme
+
+  - id: ofac-sdn
+    name: OFAC Specially Designated Nationals List
+    version: "2026-06-13"
+    url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
+    applies_to:
+      - guardrails/compliance.yaml
+      - guardrails/denied-topics.yaml
+      - skills/using-blockchain-agent-skills
+      - references/evm-mainnet-guardrails.md
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-06-15"
+    reviewer: compliance-sme
+
+  - id: nist-sp-800-57
+    name: NIST SP 800-57 Key Management
+    version: "Part 1 Rev 5"
+    url: https://csrc.nist.gov/publications/detail/sp/800-57-part-1/rev-5/final
+    applies_to:
+      - references/kms-signing-patterns.md
+      - guardrails/security.yaml
+      - skills/consensus-validator-ops
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-12-13"
+    reviewer: security-sme
+
+  - id: solana-security-best-practices
+    name: Solana Program Security Best Practices
+    version: "2026-06"
+    url: https://docs.solana.com/developing/programming-model/security
+    applies_to:
+      - references/solana-program-security.md
+      - skills/smart-contract-factory
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-09-13"
+    reviewer: contracts-sme
+
+  - id: cosmos-ibc-v8
+    name: Cosmos IBC Protocol v8
+    version: "8.x"
+    url: https://ibc.cosmos.network/
+    applies_to:
+      - references/cosmos-ibc-patterns.md
+      - mcp/cosmos-rpc-server
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-09-13"
+    reviewer: platform-sme
+
+  - id: near-nep-141
+    name: NEAR NEP-141 Fungible Token
+    version: "1.0.0"
+    url: https://github.com/near/NEPs/blob/master/neps/nep-0141.md
+    applies_to:
+      - references/near-account-model-patterns.md
+      - skills/token-standards-engine
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-09-13"
+    reviewer: contracts-sme
+
+  - id: model-context-protocol
+    name: Model Context Protocol Specification
+    version: "2025-06-18"
+    url: https://modelcontextprotocol.io/specification
+    applies_to:
+      - references/mcp-blockchain-rpc-patterns.md
+      - mcp/
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-09-13"
+    reviewer: integration-sme
+
+  - id: bip-137
+    name: BIP-137 Bech32 address format
+    version: final
+    url: https://github.com/bitcoin/bips/blob/master/bip-0137.mediawiki
+    applies_to:
+      - references/bitcoin-utxo-lightning-patterns.md
+      - lib/chain_providers/bitcoin.py
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-12-13"
+    reviewer: platform-sme
+
+  - id: bolt-11
+    name: BOLT 11 Invoice Encoding
+    version: "1.1"
+    url: https://github.com/lightning/bolts/blob/master/11-payment-encoding.md
+    applies_to:
+      - references/bitcoin-utxo-lightning-patterns.md
+      - mcp/bitcoin-rpc-server
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-09-13"
+    reviewer: platform-sme
+
+  - id: hedera-hts
+    name: Hedera Token Service (HTS)
+    version: "2026-06"
+    url: https://docs.hedera.com/hedera/core-concepts/smart-contracts/hedera-token-service-hts-native-tokenization
+    applies_to:
+      - references/hedera-hts-patterns.md
+      - lib/chain_providers/hedera.py
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-09-13"
+    reviewer: platform-sme
+
+  - id: op-stack-specs
+    name: OP Stack Specifications
+    version: "2026-06"
+    url: https://specs.optimism.io/
+    applies_to:
+      - references/zk-rollup-operations.md
+      - skills/rollup-operations
+    last_reviewed: "2026-06-13"
+    next_review_due: "2026-09-13"
+    reviewer: l2-sme

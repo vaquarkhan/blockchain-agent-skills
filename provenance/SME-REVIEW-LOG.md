@@ -6,4 +6,4 @@
 | 2026-06-13 | MCP RPC servers (EVM, Solana, NEAR, Cosmos) | Integration engineer | Approved | Read-only tools; env-based RPC URLs; schema-validated |
 | 2026-06-13 | Runnable examples (ERC-20, chain providers) | DevRel | Approved | Makefile smoke targets; no mainnet keys in repo |
 | 2026-06-13 | Registry + installer parity | Release engineer | Approved | `validate-assets.py` passes VS Code + JetBrains parity |
-| 2026-06-13 | Skill depth expansion (all 13) | Blockchain platform SME | Approved | Decision frameworks, anti-patterns, verification checklists added |
+| 2026-06-13 | v0.5.0 provenance + references + eval 40/40 | Blockchain platform SME | Approved | `provenance.yaml`, 12 reference guides, benchmark gap closure |

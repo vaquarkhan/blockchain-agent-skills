@@ -15,9 +15,9 @@ Infrastructure-level consensus and validator operations — **not** DeFi staking
 | Solana | PoH + Tower BFT | Vote accounts, commission | 2 |
 | NEAR | PoS / Nightshade | Validator seat, staking pool | 2 |
 | BNB | PoSA (21 validators) | Parlia validator set | 1 |
-| Avalanche | Snow consensus | P-Chain validator, Subnet validation | 3 roadmap |
-| Hedera | Hashgraph aBFT | Governing council nodes | 4 roadmap |
-| Bitcoin | PoW | Mining pool config (read-only ops) | 4 roadmap |
+| Avalanche | Snow consensus | P-Chain validator, Subnet validation | 3 partial |
+| Hedera | Hashgraph aBFT | Mirror reads via `hedera-rpc-server`; council ops human-only | 4 read-only |
+| Bitcoin | PoW | UTXO + Lightning reads via `bitcoin-rpc-server` | 4 read-only |
 
 Guardrails: `transaction-safety.yaml` (simulate, value thresholds), `security.yaml` (KMS for validator keys — never in LLM), `compliance.yaml` (audit trail). Slashing protection is **mandatory** for Ethereum PoS.
 

@@ -15,9 +15,9 @@ Unified fungible/NFT interface with chain-specific adapters. All transfers/mints
 | NEAR | NEP-141 | NEP-171 | 2 |
 | Solana | SPL, Token-2022 | Metaplex, cNFTs | 2 |
 | Cosmos | CW-20, ICS-20 | CW-721 | 2 |
-| TON | Jettons (TEP-74) | TON NFT (TEP-62) | 4 roadmap |
-| Sui | Coin | Kiosk | 3 roadmap |
-| Aptos | Fungible Asset v2 | Digital Asset | 3 roadmap |
+| TON | Jettons (TEP-74) | TON NFT (TEP-62) | 4 read via `ton-rpc-server` |
+| Sui | Coin | Kiosk | 3 read via `move-rpc-server` |
+| Aptos | Fungible Asset v2 | Digital Asset | 3 read via `move-rpc-server` |
 
 Security guardrails (`security.yaml`): honeypot detection, GoPlus/forta feeds, top holder concentration >30% warn, unlimited approval warn. Compliance: sanctions screening on all counterparties.
 

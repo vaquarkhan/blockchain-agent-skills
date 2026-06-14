@@ -80,7 +80,7 @@
     {"id": "evm-erc20-deploy", "readme": "examples/evm-erc20-deploy/README.md", "runnable": true},
     {"id": "chain-provider-validation", "readme": "examples/chain-provider-validation/README.md", "runnable": true},
     {"id": "solana-spl-token", "readme": "examples/solana-spl-token/README.md", "runnable": true},
-    {"id": "cosmos-ibc-transfer", "readme": "examples/cosmos-ibc-transfer/README.md", "runnable": false}
+    {"id": "cosmos-ibc-transfer", "readme": "examples/cosmos-ibc-transfer/README.md", "runnable": true}
   ],
   "mcp_templates": [
     {"label": "EVM", "path": "mcp/evm-rpc.mcp.json"},

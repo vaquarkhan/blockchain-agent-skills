@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0
+
+- Add `provenance/provenance.yaml` with authoritative standards (EIP, OFAC, NIST, IBC, BOLT, HTS, OP Stack)
+- Expand all reference guides to 80–130 lines with provenance footers; add 5 new chain/topic guides
+- Eval coverage **40/40** with per-task breakdown in `evals/report.json` and `evals/gaps.md`
+- `scripts/validate-provenance.py` enforced in CI; skills-provenance links to external standard IDs
+- Reconcile skill tier tables with implemented MCP read paths (Move, Bitcoin, Hedera, TON)
+- VS Code extension version aligned to 0.5.0
+
 ## 0.4.0
 
 - Bedrock AgentCore Lambda handlers with per-skill artifacts (manifest, OpenAPI, action groups)

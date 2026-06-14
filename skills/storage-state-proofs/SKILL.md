@@ -14,7 +14,7 @@ Cryptographic proof generation and verification for on-chain state inclusion acr
 | EVM | Merkle-Patricia trie (EIP-1186) | `eth_getProof` | 1 |
 | Solana | Account proof via bank hash | bank hash + account data | 2 |
 | Cosmos | ICS-23 proof via IBC | IBC client query | 2 |
-| Bitcoin | Merkle tx inclusion | block Merkle branch | 4 roadmap |
+| Bitcoin | Merkle tx inclusion | block Merkle branch | 4 read via `bitcoin-rpc-server` |
 
 Proofs enable light client verification, cross-chain bridges (zkBridge, IBC), and audit evidence of state at block N.
 

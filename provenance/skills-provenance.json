@@ -1,19 +1,19 @@
-{
-  "version": "0.2.0",
-  "review_policy": "quarterly-tier1-semiannual-tier3",
-  "skills": [
-    {"name": "using-blockchain-agent-skills", "tier": "meta", "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["docs/TECHNICAL-REFERENCE.md", "guardrails/"]},
-    {"name": "chain-abstraction", "tier": 1, "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["lib/chain_providers/", "registry/chains.json"]},
-    {"name": "transaction-lifecycle", "tier": 1, "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["guardrails/transaction-safety.yaml", "templates/tx-plan.yaml"]},
-    {"name": "block-state-queries", "tier": 1, "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["mcp/evm-rpc-server/", "lib/chain_providers/"]},
-    {"name": "smart-contract-factory", "tier": 2, "owner": "contracts-sme", "last_reviewed": "2026-06-13", "sources": ["examples/evm-erc20-deploy/", "templates/mainnet-readiness.yaml"]},
-    {"name": "event-indexing", "tier": 2, "owner": "data-sme", "last_reviewed": "2026-06-13", "sources": ["references/mcp-blockchain-rpc-patterns.md"]},
-    {"name": "token-standards-engine", "tier": 2, "owner": "contracts-sme", "last_reviewed": "2026-06-13", "sources": ["examples/solana-spl-token/"]},
-    {"name": "rollup-operations", "tier": 3, "owner": "l2-sme", "last_reviewed": "2026-06-13", "sources": ["docs/coverage-roadmap.md"]},
-    {"name": "data-availability", "tier": 3, "owner": "l2-sme", "last_reviewed": "2026-06-13", "sources": ["docs/coverage-roadmap.md"]},
-    {"name": "privacy-zk", "tier": 3, "owner": "zk-sme", "last_reviewed": "2026-06-13", "sources": ["docs/coverage-roadmap.md"]},
-    {"name": "storage-state-proofs", "tier": 3, "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["references/simulate-first-lifecycle.md"]},
-    {"name": "consensus-validator-ops", "tier": 4, "owner": "validator-sme", "last_reviewed": "2026-06-13", "sources": ["templates/validator-rotation-plan.yaml"]},
-    {"name": "network-monitoring", "tier": 4, "owner": "sre-sme", "last_reviewed": "2026-06-13", "sources": ["hooks/mainnet-guard.sh"]}
-  ]
-}
+{
+  "version": "0.5.0",
+  "review_policy": "quarterly-tier1-semiannual-tier3",
+  "skills": [
+    {"name": "using-blockchain-agent-skills", "tier": "meta", "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["provenance/provenance.yaml#ofac-sdn", "guardrails/denied-topics.yaml"]},
+    {"name": "chain-abstraction", "tier": 1, "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["provenance/provenance.yaml#eip-155", "lib/chain_providers/", "registry/chains.json"]},
+    {"name": "transaction-lifecycle", "tier": 1, "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["provenance/provenance.yaml#eip-4337", "references/simulate-first-lifecycle.md", "guardrails/transaction-safety.yaml"]},
+    {"name": "block-state-queries", "tier": 1, "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["references/mcp-blockchain-rpc-patterns.md", "mcp/evm-rpc-server/"]},
+    {"name": "smart-contract-factory", "tier": 2, "owner": "contracts-sme", "last_reviewed": "2026-06-13", "sources": ["provenance/provenance.yaml#solana-security-best-practices", "examples/evm-erc20-deploy/", "templates/mainnet-readiness.yaml"]},
+    {"name": "event-indexing", "tier": 2, "owner": "data-sme", "last_reviewed": "2026-06-13", "sources": ["references/mcp-blockchain-rpc-patterns.md", "references/evm-mainnet-guardrails.md"]},
+    {"name": "token-standards-engine", "tier": 2, "owner": "contracts-sme", "last_reviewed": "2026-06-13", "sources": ["provenance/provenance.yaml#near-nep-141", "references/move-object-patterns.md", "examples/solana-spl-token/"]},
+    {"name": "rollup-operations", "tier": 3, "owner": "l2-sme", "last_reviewed": "2026-06-13", "sources": ["provenance/provenance.yaml#op-stack-specs", "references/zk-rollup-operations.md"]},
+    {"name": "data-availability", "tier": 3, "owner": "l2-sme", "last_reviewed": "2026-06-13", "sources": ["references/zk-rollup-operations.md", "skills/data-availability/SKILL.md"]},
+    {"name": "privacy-zk", "tier": 3, "owner": "zk-sme", "last_reviewed": "2026-06-13", "sources": ["references/zk-rollup-operations.md", "guardrails/denied-topics.yaml"]},
+    {"name": "storage-state-proofs", "tier": 3, "owner": "platform-sme", "last_reviewed": "2026-06-13", "sources": ["references/simulate-first-lifecycle.md", "mcp/evm-rpc-server/"]},
+    {"name": "consensus-validator-ops", "tier": 4, "owner": "validator-sme", "last_reviewed": "2026-06-13", "sources": ["provenance/provenance.yaml#nist-sp-800-57", "references/substrate-validator-patterns.md", "templates/validator-rotation-plan.yaml"]},
+    {"name": "network-monitoring", "tier": 4, "owner": "sre-sme", "last_reviewed": "2026-06-13", "sources": ["references/mcp-blockchain-rpc-patterns.md", "hooks/mainnet-guard.sh"]}
+  ]
+}

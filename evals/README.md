@@ -27,7 +27,9 @@ python evals/run.py \
 
 ## CI
 
-`.github/workflows/agent-benchmarks.yml` runs the scorer on pull requests.
+`.github/workflows/validate-and-package.yml` runs the scorer on push/PR. **CI requires 40/40** concern coverage.
+
+See [gaps.md](gaps.md) for historical gap analysis and out-of-scope areas.
 
 ## Updating results
 

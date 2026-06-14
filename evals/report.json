@@ -1,7 +1,124 @@
 {
   "baseline_score": 11,
-  "with_skills_score": 34,
+  "with_skills_score": 40,
   "possible_score": 40,
-  "delta": 23,
-  "improved": true
+  "delta": 29,
+  "improved": true,
+  "complete": true,
+  "tasks": [
+    {
+      "task_id": "evm_erc20_deploy",
+      "expected_count": 5,
+      "covered_count": 5,
+      "missing_concerns": [],
+      "covered_concerns": [
+        "access-control",
+        "gas",
+        "mainnet",
+        "rollback",
+        "simulation"
+      ],
+      "complete": true
+    },
+    {
+      "task_id": "solana_spl_mint",
+      "expected_count": 5,
+      "covered_count": 5,
+      "missing_concerns": [],
+      "covered_concerns": [
+        "authority",
+        "pda",
+        "priority-fees",
+        "simulate",
+        "upgrade"
+      ],
+      "complete": true
+    },
+    {
+      "task_id": "cosmos_ibc_transfer",
+      "expected_count": 5,
+      "covered_count": 5,
+      "missing_concerns": [],
+      "covered_concerns": [
+        "channel",
+        "confirmation",
+        "fees",
+        "reconciliation",
+        "timeout"
+      ],
+      "complete": true
+    },
+    {
+      "task_id": "mainnet_guard",
+      "expected_count": 5,
+      "covered_count": 5,
+      "missing_concerns": [],
+      "covered_concerns": [
+        "audit",
+        "guardrails",
+        "human-approval",
+        "simulate",
+        "threshold"
+      ],
+      "complete": true
+    },
+    {
+      "task_id": "contract_upgrade",
+      "expected_count": 5,
+      "covered_count": 5,
+      "missing_concerns": [],
+      "covered_concerns": [
+        "evidence",
+        "rollback",
+        "simulation",
+        "storage-layout",
+        "timelock"
+      ],
+      "complete": true
+    },
+    {
+      "task_id": "validator_slashing",
+      "expected_count": 5,
+      "covered_count": 5,
+      "missing_concerns": [],
+      "covered_concerns": [
+        "communication",
+        "double-sign",
+        "downtime",
+        "incident",
+        "kms"
+      ],
+      "complete": true
+    },
+    {
+      "task_id": "compliance_screening",
+      "expected_count": 5,
+      "covered_count": 5,
+      "missing_concerns": [],
+      "covered_concerns": [
+        "approval",
+        "audit",
+        "denied-topics",
+        "retention",
+        "sanctions"
+      ],
+      "complete": true
+    },
+    {
+      "task_id": "rollup_batch",
+      "expected_count": 5,
+      "covered_count": 5,
+      "missing_concerns": [],
+      "covered_concerns": [
+        "cost",
+        "monitoring",
+        "reorg",
+        "sequencer",
+        "simulate"
+      ],
+      "complete": true
+    }
+  ],
+  "incomplete_tasks": [],
+  "missing_concerns_total": 0
 }

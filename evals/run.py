@@ -53,6 +53,26 @@ def score(tasks: list[dict], results: dict[str, list[str]]) -> tuple[int, int]:
     return total, possible
 
 
+def task_breakdown(tasks: list[dict], results: dict[str, list[str]]) -> list[dict]:
+    rows: list[dict] = []
+    for task in tasks:
+        expected = set(task["expected_concerns"])
+        actual = set(results.get(task["id"], []))
+        missing = sorted(expected - actual)
+        covered = sorted(expected & actual)
+        rows.append(
+            {
+                "task_id": task["id"],
+                "expected_count": len(expected),
+                "covered_count": len(covered),
+                "missing_concerns": missing,
+                "covered_concerns": covered,
+                "complete": len(missing) == 0,
+            }
+        )
+    return rows
+
+
 def main() -> int:
     args = parse_args()
     tasks = load_json(args.tasks)
@@ -62,6 +82,8 @@ def main() -> int:
     baseline_score, possible = score(tasks, baseline)
     with_skills_score, _ = score(tasks, with_skills)
     delta = with_skills_score - baseline_score
+    breakdown = task_breakdown(tasks, with_skills)
+    incomplete = [row for row in breakdown if not row["complete"]]
 
     report = {
         "baseline_score": baseline_score,
@@ -69,6 +91,10 @@ def main() -> int:
         "possible_score": possible,
         "delta": delta,
         "improved": delta > 0,
+        "complete": with_skills_score == possible,
+        "tasks": breakdown,
+        "incomplete_tasks": [row["task_id"] for row in incomplete],
+        "missing_concerns_total": sum(len(row["missing_concerns"]) for row in breakdown),
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
@@ -79,7 +105,10 @@ def main() -> int:
     if delta <= 0:
         print("Evaluation failed: with-skills score did not improve.")
         return 1
-    print(f"Evaluation report written to {args.report}")
+    if incomplete:
+        print(f"Evaluation incomplete: {len(incomplete)} task(s) missing concerns — see {args.report}")
+        return 1
+    print(f"Evaluation report written to {args.report} (40/40 complete)")
     return 0
 
 

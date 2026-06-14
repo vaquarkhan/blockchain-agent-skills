@@ -263,6 +263,8 @@ def validate_registry(data: dict) -> list[str]:
 
     if not path_exists("provenance/skills-provenance.json"):
         errors.append("missing provenance/skills-provenance.json")
+    if not path_exists("provenance/provenance.yaml"):
+        errors.append("missing provenance/provenance.yaml")
 
     return errors
 

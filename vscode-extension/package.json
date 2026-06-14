@@ -2,7 +2,7 @@
   "name": "blockchain-agent-skills",
   "displayName": "Blockchain Agent Skills",
   "description": "Install blockchain agent skill packs, guardrails, MCP templates, chain presets, and examples into a VS Code workspace.",
-  "version": "0.2.0",
+  "version": "0.5.0",
   "publisher": "ViquarKhan",
   "license": "MIT",
   "engines": {
